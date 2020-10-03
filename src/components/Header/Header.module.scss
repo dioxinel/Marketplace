@@ -1,0 +1,51 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    margin-left: 6.74%;
+    width: 82.22%;
+    height: 42px;
+
+    &:hover {
+        background-color: green;
+    }  
+}
+
+
+.Logo {
+    display: inline-block;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+.SellBtn {
+    background: #349A89;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 14px;
+    width: 131px;
+    margin-right: 33px;
+    line-height: 31px;
+}
+
+.LogBtn {
+    width: 42px;
+    line-height: 40px;
+    font-size: 12px;
+    margin-right: 40px;
+    &:hover {
+        background: white;
+    }
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
