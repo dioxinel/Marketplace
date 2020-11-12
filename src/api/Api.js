@@ -20,9 +20,8 @@ export const Auth = {
     });
   },
 
-  logout(delUser) {
+  logout() {
     this.setToken('');
-    delUser('');
   },
 
   register({ email, password, fullName }) {
@@ -38,4 +37,21 @@ export const Account = {
   getUser() {
     return axios.get('/api/account', {});
   },
+  getUserById(id) {
+    return axios.get(`/api/users/${id}`);
+  },
+};
+
+export const Products = {
+  fetchLatest() {
+    return axios.get('/api/products/latest');
+  },
+  getProduct(id) {
+    return axios.get(`/api/products/${id}`)
+    
+  },
+  async add({ ...values }) {
+    return await axios.post('/api/products', { ...values })
+  }
+  
 };

@@ -13,7 +13,7 @@ function LoginForm() {
 
   async function onSubmit({ email, password }) {
     await store.auth.login.run({ email, password });
-
+    store.viewer.setIsLoggedIn(true);
     history.push(routes.home);
   }
   const formikProps = {

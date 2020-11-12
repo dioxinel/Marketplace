@@ -5,15 +5,20 @@ import { useStore } from 'src/stores/createStore';
 import { observer } from 'mobx-react';
 import Api from 'src/api';
 import 'mobx-react-lite/batchingForReactDom';
+import { getInitials } from './getInitials';
+
 function Header() {
   const store = useStore();
   const user = store.viewer.user;
 
   function handleLogout() {
-    Api.Auth.logout(store.viewer.setViewer);
+    Api.Auth.logout();
+    store.viewer.setViewer(null);
+    store.viewer.setIsLoggedIn(false);
   }
+  if (store.viewer.isLoggedIn) {
+    const userInitial = getInitials(user.fullName.split(' '));
 
-  if (user) {
     return (
       <div className={s.Header}>
         <div className={s.left}>
@@ -21,6 +26,7 @@ function Header() {
         </div>
         <div className={s.right}>
           <button className={s.SellBtn}>SELL</button>
+          <div className={s.avatar}>{userInitial}</div>
           <a
             className={s.LogBtn}
             onClick={handleLogout}

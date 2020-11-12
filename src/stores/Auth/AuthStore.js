@@ -9,7 +9,6 @@ export const AuthStore = types.model('AuthStore', {
 function loginFlow({ email, password }) {
   return async (flow) => {
     const res = await Api.Auth.login({ email, password });
-    console.log(res.data);
 
     Api.Auth.setToken(res.data.token);
 

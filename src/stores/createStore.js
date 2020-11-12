@@ -1,8 +1,13 @@
 import { RootStore } from './RootStore';
 import { createContext, useContext } from 'react';
+import { createPersist } from './utils';
 
 export function createStore() {
   const root = RootStore.create();
+
+  const persistor = createPersist(root);
+
+  persistor.rehydrate();
 
   return root;
 }
