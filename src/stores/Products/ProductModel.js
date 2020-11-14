@@ -14,4 +14,9 @@ export const ProductModel = types.model('ProductModel', {
   createdAt: types.string,
   updatedAt: types.string,
   owner: types.maybe(types.reference(UserModel))
+}).actions((store) => ({
+  save() {
+    store.saved = !store.saved;
+  }
 })
+)

@@ -34,7 +34,7 @@ function Header() {
           >
             LOGOUT
           </a>
-          <Icon name={'like'} className={s.Like} />
+          <Icon name={'saved'} className={s.Like} />
         </div>
       </div>
     );
@@ -49,7 +49,7 @@ function Header() {
         <a className={s.LogBtn} href={'/auth/login'}>
           LOGIN
         </a>
-        <Icon name={'like'} className={s.Like} />
+        <Icon name={'saved'} className={s.Like} />
       </div>
     </div>
   );

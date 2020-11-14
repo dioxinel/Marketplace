@@ -1,9 +1,8 @@
 import { observer } from 'mobx-react';
 import React, { useEffect } from 'react';
-import { generatePath, NavLink } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
-import Header from '../../components/Header/Header';
-import { routes } from '../routes';
+import ProductsListItem from '../ProductView/ProductsListItem';
+import s from './Home.module.scss';
 
 function Home() {
   const store = useStore();
@@ -11,19 +10,11 @@ function Home() {
       store.latestProducts.fetchLatest.run();
 });
   return (
-    <div>
-      <Header />
-      <ul>
+    <div className={s.pageBody}>
+      <ul className={s.productsList}>
         {store.latestProducts.items.map((item) => {
           return (
-            <NavLink
-              to={generatePath(routes.product, {
-                productId: item.id,
-              })}
-              key={item.id}
-            >
-              <li>{item.title}</li>
-            </NavLink>
+            <ProductsListItem item={item} key={item.id}/>
           );
         })}
       </ul>

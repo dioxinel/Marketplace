@@ -52,6 +52,11 @@ export const Products = {
   },
   async add({ ...values }) {
     return await axios.post('/api/products', { ...values })
-  }
-  
+  },
+  save(id) {
+    return axios.post(`/api/products/${id}/saved`)
+  },
+  delete(id) {
+    return axios.delete(`/api/products/${id}/saved`)
+  },
 };

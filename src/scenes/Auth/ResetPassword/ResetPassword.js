@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from 'src/components/Header/Header';
 import { Formik } from 'formik';
 import { Input } from 'src/components/Form/Input/Input';
 import { SubmitBTN } from 'src/components/Form/Button/SubmitBtn';
@@ -19,7 +18,6 @@ function ResetPassword() {
 
   return (
     <div>
-      <Header />
       <div className={s.pageBody}>
         <Formik {...formikProps}>
           <form className={s.form}>

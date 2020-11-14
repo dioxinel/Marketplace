@@ -11,7 +11,7 @@ import { useStore } from 'src/stores/createStore.js';
 import { observer } from 'mobx-react';
 import { ProductView } from './ProductView/ProductView.js';
 import AddProduct from './ProductView/AddProduct.js';
-
+import Header from 'src/components/Header/Header';
 export const routes = {
   home: '/',
   auth: '/auth',
@@ -41,6 +41,7 @@ export const PrivateRoute = observer(
 function Router() {
   return (
     <BrowserRouter>
+      <Header />
       <Switch>
         <Route path={routes.home} exact component={Home} />
         <Route path={routes.product} component={ProductView} />

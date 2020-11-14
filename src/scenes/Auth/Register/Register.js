@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../../../components/Header/Header';
 import { RegisterForm } from './RegisterForm';
 import s from '../Auth.module.scss';
 
@@ -10,7 +9,6 @@ function Register() {
 
   return (
     <div>
-      <Header />
       <div className={s.pageBody}>
         <RegisterForm onSubmit={onSubmit} />
       </div>

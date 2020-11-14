@@ -14,6 +14,7 @@ export function useProductCollection() {
 
 export const ProductCollection = createCollection(ProductModel, {
     getProduct: asyncModel(getProduct),
+    saveProduct: asyncModel(saveProduct),
 });
 
 
@@ -28,4 +29,19 @@ function getProduct(id) {
         };
         return
     }
+}
+
+function saveProduct(id) {
+    return async function saveProductFlow(flow, store, Root) {
+        const product = store.collection.get(id)
+        if(product.saved) {
+            await Api.Products.delete(id);
+            product.save()
+            return
+        }
+        await Api.Products.save(id);
+        product.save()
+        return
+        };
+          
 }
