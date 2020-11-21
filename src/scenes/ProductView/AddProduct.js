@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from 'src/components/Header/Header';
 import s from './Product.module.scss';
 import AddProductForm from './AddProductForm';
 import { useHistory } from 'react-router';
@@ -25,7 +24,6 @@ function AddProduct() {
     }
   return (
     <div className={s.pageBody}>
-      <Header />
       <AddProductForm onSubmit={onSubmit}/>
     </div>
   );

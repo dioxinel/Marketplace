@@ -10,7 +10,6 @@ import Api from 'src/api';
 
 export const RegisterForm = () => {
   const history = useHistory();
-
   async function onSubmit({
     email,
     password,

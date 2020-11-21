@@ -92,35 +92,43 @@
     border-radius: 4px;
     margin: 5px 3px;
     padding: 0px;
-}
 
-.listItemImage {
-    border-radius: 4px 4px 0px 0px;
-    cursor: pointer;
-    margin-top: 3px;
-    margin-left: 2.5px;
-    width: 202px;
-    height: 148px;
-    &:hover{
-        opacity: .7;
+    .listItemImage {
+        border-radius: 4px 4px 0px 0px;
+        cursor: pointer;
+        margin-top: 3px;
+        margin-left: 2.5px;
+        width: 202px;
+        height: 148px;
+        &:hover{
+            opacity: .7;
+        }
     }
-}
-
-.listItemTitle {
-    font-size: 15px;
-    font-family: "Helvetic";
-    cursor: pointer;
-    color: #373738;
-    max-width: 185px;
-    height: 17px;
-    margin-top: 6px;
-    margin-left: 12px;
-    &:hover{
-        text-decoration: underline;
+    
+    .listItemTitle {
+        font-size: 15px;
+        font-family: "Helvetic";
+        cursor: pointer;
+        color: #373738;
+        max-width: 185px;
+        width: fit-content;
+        height: 17px;
+        margin-top: 6px;
+        margin-left: 12px;
+        &:hover{
+            text-decoration: underline;
+        }
     }
+
+
+    .NavLink {
+        text-decoration: none;
+    }
+    
 }
 
-.listItemPrice {
+.itemPrice {
+    cursor: default;
     font-size: 18px;
     font-weight: 900;
     font-family: "Helvetic";
@@ -129,16 +137,9 @@
     height: 21px;
     margin-top: 7px;
     margin-left: 12px;
-
 }
 
-.NavLink {
-    text-decoration: none;
-}
-
-
-
-.likeContainer {
+.saveContainer {
     cursor: pointer;
     z-index: 1;
     position: absolute;

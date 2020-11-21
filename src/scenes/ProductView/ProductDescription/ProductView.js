@@ -1,8 +1,8 @@
-
 import { observer } from 'mobx-react';
 import React from 'react';
 import { useParams } from 'react-router';
 import { useProductCollection } from 'src/stores/Products/ProductsCollection';
+import { ProductDescription } from './ProductDescription';
 
 
 export const ProductView = observer(() => {
@@ -12,11 +12,7 @@ export const ProductView = observer(() => {
   const product = collection.collection.get(productId)
   if (product) {
     return (
-    <div key={product.id}>{product.title}
-      <div>{product.description}</div>
-      <div>{product.owner && product.owner.fullName}</div>
-      <img src={product.photos[0]} alt={"a"}/>
-    </div>
+    <ProductDescription product={product} />
     );
   }
   return <div>Not found</div>;

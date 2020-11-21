@@ -9,7 +9,7 @@ import Auth from './Auth/Auth.js';
 import React from 'react';
 import { useStore } from 'src/stores/createStore.js';
 import { observer } from 'mobx-react';
-import { ProductView } from './ProductView/ProductView.js';
+import { ProductView } from './ProductView/ProductDescription/ProductView.js';
 import AddProduct from './ProductView/AddProduct.js';
 import Header from 'src/components/Header/Header';
 export const routes = {

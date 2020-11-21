@@ -34,7 +34,7 @@ function ProductsListItem({item}) {
         className={s.NavLink}>
         <div className={s.listItem}>
             <img src={productPicture} alt={"description"} className={s.listItemImage}/>
-            <div className={s.likeContainer}>
+            <div className={s.saveContainer}>
                 <Icon 
                     name={'saved'} 
                     saved={item.saved} 
@@ -42,7 +42,7 @@ function ProductsListItem({item}) {
                     />
             </div>
             <div className={s.listItemTitle}>{item.title}</div>
-            <div className={s.listItemPrice}>{'$' + item.price}</div>
+            <div className={s.itemPrice}>{'$' + item.price}</div>
         </div>
     </div>
   );
