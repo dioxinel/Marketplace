@@ -6,7 +6,7 @@ import { ProductTextDescription } from './ProductTextDescription';
 
 export function ProductDescription({product}) {
     return (
-    <div key={product.id} className={s.productView}>
+    <div key={product.id} className={s.productDescription}>
       <ProductImage product={product} />
       <ProductTextDescription product={product}/>
     </div>

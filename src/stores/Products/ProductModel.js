@@ -1,10 +1,10 @@
 import { types } from 'mobx-state-tree';
-import { UserModel } from '../UserModel'
+import { UserModel } from '../Users/UserModel'
 
 
 export const ProductModel = types.model('ProductModel', {
   id: types.identifierNumber,
-  description: types.string,
+  description: types.maybeNull(types.string),
   ownerId: types.number,
   title: types.string,
   photos: types.maybeNull(types.array(types.string)),

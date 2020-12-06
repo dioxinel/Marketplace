@@ -8,6 +8,7 @@ import {
   resolveIdentifier,
   types,
 } from 'mobx-state-tree';
+import { normalize } from 'normalizr';
 
 export function asyncModel(thunk, auto = true) {
   const model = types
@@ -43,7 +44,12 @@ export function asyncModel(thunk, auto = true) {
 
         return promise;
       },
+      marge({data, schema}) {
+        const {entities, result} = normalize(data, schema);
 
+        getRoot(store).entities.marge(entities)
+        return result;
+      },
       async _auto(promise) {
         try {
           store.start();

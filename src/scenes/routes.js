@@ -10,8 +10,10 @@ import React from 'react';
 import { useStore } from 'src/stores/createStore.js';
 import { observer } from 'mobx-react';
 import { ProductView } from './ProductView/ProductDescription/ProductView.js';
-import AddProduct from './ProductView/AddProduct.js';
+import AddProduct from './ProductView/AddProduct/AddProduct.js';
 import Header from 'src/components/Header/Header';
+import { UserProducts } from './ProductView/UserProducts/UserProducts.js';
+
 export const routes = {
   home: '/',
   auth: '/auth',
@@ -20,6 +22,7 @@ export const routes = {
   resetPassword: '/auth/reset-password',
   product: '/products/:productId',
   newProduct: '/product/add',
+  userProducts: '/user/products/:userId',
 };
 
 export const PrivateRoute = observer(
@@ -45,6 +48,7 @@ function Router() {
       <Switch>
         <Route path={routes.home} exact component={Home} />
         <Route path={routes.product} component={ProductView} />
+        <Route path={routes.userProducts} component={UserProducts} />
         <Route path={routes.newProduct} component={AddProduct} />
         <PrivateRoute path={routes.auth} component={Auth} />
       </Switch>

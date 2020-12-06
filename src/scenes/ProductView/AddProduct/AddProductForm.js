@@ -2,9 +2,10 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Input } from 'src/components/Form/Input/Input';
 import { SubmitBTN } from 'src/components/Form/Button/SubmitBtn';
-import s from './Product.module.scss';
+import s from '../Product.module.scss';
+import { AddPhotos } from './AddPhotos';
 
-function AddProductForm({onSubmit}) {
+function AddProductForm({onSubmit, addPhoto, photosLinkList}) {
   const formikProps = {
     initialValues: {
       title: '',
@@ -45,12 +46,7 @@ function AddProductForm({onSubmit}) {
               placeholder={'For example: Iron man suit'}
             />
           </div>
-          <div className={s.group}>
-            <Input
-              name="photos"
-              label="PHOTOS"
-            />
-          </div>
+          <AddPhotos addItem={addPhoto} photosLinkList={photosLinkList}/>
           <div className={s.group}>
             <Input
               name="price"

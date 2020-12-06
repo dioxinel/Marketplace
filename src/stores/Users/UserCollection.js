@@ -2,7 +2,7 @@
 import Api from "src/api";
 import { useStore } from "../createStore";
 import { asyncModel, createCollection } from "../utils";
-import { UserModel } from '../UserModel'
+import { UserModel } from './UserModel'
 
 
 export function useUserCollection() {

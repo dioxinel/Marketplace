@@ -19,7 +19,6 @@ export function ProductTextDescription({product}) {
             <div className={s.itemPrice}>{'$' + product.price}</div>
         </div>
         <div className={s.description}>{product.description}</div>
-      {/* <div>{product.owner && product.owner.fullName}</div> */}
     </div>
     );
   }

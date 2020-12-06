@@ -3,6 +3,8 @@ import React from 'react';
 import { useParams } from 'react-router';
 import { useProductCollection } from 'src/stores/Products/ProductsCollection';
 import { ProductDescription } from './ProductDescription';
+import { RightBar } from './RightBar';
+import s from './ProductDescription.module.scss';
 
 
 export const ProductView = observer(() => {
@@ -12,7 +14,12 @@ export const ProductView = observer(() => {
   const product = collection.collection.get(productId)
   if (product) {
     return (
-    <ProductDescription product={product} />
+      <div className={s.productView}>
+        <ProductDescription product={product} />
+        <RightBar product={product} />
+      </div>
+    
+    
     );
   }
   return <div>Not found</div>;

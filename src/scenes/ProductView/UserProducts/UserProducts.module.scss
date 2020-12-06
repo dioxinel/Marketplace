@@ -1,0 +1,16 @@
+.pageBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ul{
+        padding: 0px;
+    }
+}
+.productsList {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 861px;
+}
+
+
+

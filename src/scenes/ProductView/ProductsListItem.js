@@ -7,7 +7,6 @@ import { useProductCollection } from 'src/stores/Products/ProductsCollection';
 import { observer } from 'mobx-react';
 
 
-
 function ProductsListItem({item}) {
     const history = useHistory()
     const collection = useProductCollection()

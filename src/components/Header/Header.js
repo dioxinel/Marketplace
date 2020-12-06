@@ -2,10 +2,12 @@ import React from 'react';
 import s from './Header.module.scss';
 import Icon from '../Icon';
 import { useStore } from 'src/stores/createStore';
+import { UserAvatar } from '../User/UserAvatar';
 import { observer } from 'mobx-react';
 import Api from 'src/api';
 import 'mobx-react-lite/batchingForReactDom';
-import { getInitials } from './getInitials';
+import { SellButton } from './SellButton';
+import { Logo } from './Logo';
 
 function Header() {
   const store = useStore();
@@ -17,16 +19,12 @@ function Header() {
     store.viewer.setIsLoggedIn(false);
   }
   if (store.viewer.isLoggedIn) {
-    const userInitial = getInitials(user.fullName.split(' '));
-
     return (
       <div className={s.Header}>
-        <div className={s.left}>
-          <Icon name={'logo'} className={s.Logo} />
-        </div>
+        <Logo />
         <div className={s.right}>
-          <button className={s.SellBtn}>SELL</button>
-          <div className={s.avatar}>{userInitial}</div>
+          <SellButton />
+          <UserAvatar user={user} className={s.avatar}/>
           <a
             className={s.LogBtn}
             onClick={handleLogout}
@@ -41,9 +39,7 @@ function Header() {
   }
   return (
     <div className={s.Header}>
-      <div className={s.left}>
-        <Icon name={'logo'} className={s.Logo} />
-      </div>
+      <Logo />
       <div className={s.right}>
         <button className={s.SellBtn}>SELL</button>
         <a className={s.LogBtn} href={'/auth/login'}>

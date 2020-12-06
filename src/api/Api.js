@@ -59,4 +59,8 @@ export const Products = {
   delete(id) {
     return axios.delete(`/api/products/${id}/saved`)
   },
+
+  fetchOwnProducts(id) {
+    return axios.get(`/api/users/${id}/products`)
+  },
 };

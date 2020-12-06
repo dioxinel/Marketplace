@@ -1,5 +1,5 @@
 import { types } from 'mobx-state-tree';
-import { UserModel } from './UserModel';
+import { UserModel } from './Users/UserModel';
 
 const ViewerModel = UserModel.named('ViewerModel');
 
