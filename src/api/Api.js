@@ -48,10 +48,15 @@ export const Products = {
   },
   getProduct(id) {
     return axios.get(`/api/products/${id}`)
-    
   },
-  async add({ ...values }) {
-    return await axios.post('/api/products', { ...values })
+  add( {...data}) {
+     return axios.post('/api/products', {...data})
+  },
+  uploadImage(data) {
+    return axios.post(`/api/upload/images`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }})
   },
   save(id) {
     return axios.post(`/api/products/${id}/saved`)
@@ -64,3 +69,9 @@ export const Products = {
     return axios.get(`/api/users/${id}/products`)
   },
 };
+
+export const Chats = {
+  createChat(message, id) {
+    return axios.post(`/api/products/${id}/createChat`, message)
+  }
+}

@@ -1,4 +1,4 @@
-import s from './ProductDescription.module.scss';
+import s from './../../ProductDescription.module.scss';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { useProductCollection } from 'src/stores/Products/ProductsCollection';

@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './ProductDescription.module.scss';
+import s from './../ProductDescription.module.scss';
 
 
 export function ProductImage({product}) {

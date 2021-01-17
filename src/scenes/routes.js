@@ -22,7 +22,8 @@ export const routes = {
   resetPassword: '/auth/reset-password',
   product: '/products/:productId',
   newProduct: '/product/add',
-  userProducts: '/user/products/:userId',
+  userProducts: '/user/:userId/products',
+  inbox: '/inbox/:chatId'
 };
 
 export const PrivateRoute = observer(

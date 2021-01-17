@@ -11,7 +11,7 @@ export const UserProducts = observer(() => {
   collection.getUser.run(userId)
   const user = collection.collection.get(userId)
   if(user) {
-    user.ownProducts.fetch.run(userId)
+    user.ownProducts.fetch.run()
     return (
       <div className={s.pageBody}>
         <ul className={s.productsList}>

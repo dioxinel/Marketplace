@@ -1,10 +1,12 @@
-import { types } from 'mobx-state-tree';
+import { getParent, types } from 'mobx-state-tree';
+import { normalize } from 'normalizr';
 import Api from 'src/api';
+import { LatestProductCollection } from '../schemas';
 import { asyncModel } from '../utils';
 import { ProductModel } from './ProductModel';
 
 export const OwnProductsStore = types.model('OwnProductsStore', {
-  items: types.array(types.late(() => ProductModel)),
+  items: types.array(types.reference(types.late(() => ProductModel))),
 
   fetch: asyncModel(fetchOwnProducts)
 }).actions((store) => ({
@@ -13,9 +15,12 @@ export const OwnProductsStore = types.model('OwnProductsStore', {
   }
 }));
 
-function fetchOwnProducts(id) {
+function fetchOwnProducts() {
   return async function fetchOwnProductsFlow(flow, store, Root) {
-    const res = await Api.Products.fetchOwnProducts(id);
-    store.addItems(res.data.list)
+    const res = await Api.Products.fetchOwnProducts(getParent(store).id);
+    const { result, entities } = normalize(res.data.list, LatestProductCollection)
+    Root.entities.merge(entities);
+
+    store.addItems(result)
   }
 }

@@ -70,7 +70,7 @@
     }
 
     .itemPriceContainer {
-        z-index: 1;
+       
         position: absolute;
         right: 2px;
         top: 253px;
@@ -127,69 +127,76 @@
 
 .rightBar {
     margin-left: 12.8px;
-    .productOwner {
-        width: 259px;
-        height:146px;
-        background-color: #FFFFFF;
-        border-radius: 4px;
-    
-    }
+}
 
-    .avatarContainer {
-        background-color: #349A89;
-        height: 50px;
-        border-radius: 4px 4px 0 0;
-        .avatar {
-            display: inline-block;
-            background-color: orange;
-            border-radius: 50%;
-            line-height: 78px;
-            width: 78px;
-            font-size: 30px;
-            font-weight: 600;
-            text-transform: capitalize;
-            text-align: center;
-            margin-top: 14px;
-            margin-left: 93.5px;
-        }
-    }
-    .location {
-        color: rgba(43, 43, 43, 0.499918);
-        font-size: 15x;
-        margin-bottom: 13px;
-        text-align: center;
-    }
 
-    .userName {
-        margin-bottom: 4px;
-        margin-top: 54px;
-        text-align: center;
-    }
+.avatar {
+    display: inline-block;
+    background-color: orange;
+    border-radius: 50%;
+    line-height: 78px;
+    width: 78px;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+    margin-top: 14px;
+    margin-left: 93.5px;
+}
 
-    .saveButton {
-        width: 259px;
-        height: 47px;
-        background-color: #FFF;
-        border: 1px solid #349A89;
-        display: inline-block;
-        margin-top: 9px;
-        font-size: 14px;
-        color: #535353;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .textContainer {
-            margin-left: 14px;
-        }
-
-        &:hover {
-            opacity: .7;
-        }
-
-        &:active {
-            background-color: grey;
-        }
-    }
+.productOwner {
+    width: 259px;
+    height:146px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
 
 }
+
+.avatarContainer {
+    background-color: #349A89;
+    height: 50px;
+    border-radius: 4px 4px 0 0;
+}
+
+.location {
+    color: rgba(43, 43, 43, 0.499918);
+    font-size: 15x;
+    margin-bottom: 13px;
+    text-align: center;
+}
+
+.userName {
+    margin-bottom: 4px;
+    margin-top: 54px;
+    text-align: center;
+}
+
+.saveButton {
+    width: 259px;
+    height: 47px;
+    background-color: #FFF;
+    border: 1px solid #349A89;
+    display: inline-block;
+    margin-top: 9px;
+    font-size: 14px;
+    color: #535353;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    .textContainer {
+        margin-left: 14px;
+    }
+
+    &:hover {
+        opacity: .7;
+    }
+
+    &:active {
+        background-color: grey;
+    }
+}
+
+
+

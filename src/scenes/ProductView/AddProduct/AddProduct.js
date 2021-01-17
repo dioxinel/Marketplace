@@ -1,37 +1,56 @@
-import React, { useState } from 'react';
+import React from 'react';
 import s from '../Product.module.scss';
 import AddProductForm from './AddProductForm';
 import { useHistory } from 'react-router';
 import Api from 'src/api';
 import { routes } from '../../routes';
+import { observer } from 'mobx-react';
+import { useStore } from 'src/stores/createStore';
 
 function AddProduct() {
     const history = useHistory();
-    const [photosLinkList, setPhotosLinkList] = useState([]);
+    const store = useStore()
+  // async function addImageLink(linkToRemove) {
+  //   if(linkToRemove) {
+  //     if(imageLink.length === 1) {
+  //       return setImageLink([])
+  //     }
+  //     return setImageLink([imageLink.splice(linkToRemove, 1)]) 
+  //   }
 
-    function addPhoto(list) {
-      setPhotosLinkList(list)
-    }
+  //   const button = document.querySelector('#submit');
+  //   button.disabled = 'true'
 
+  //   const data = new FormData()
+  //   const imageFile = document.querySelector('#file');
+  //   data.append('image', imageFile.files[0]);
+  //   const res = await Api.Products.uploadImage(data)
+  //   console.log(res.data)
+  //   setImageLink([ ...imageLink, res.data])
+
+  //   imageFile.value = '';
+  //   button.disabled = null
+  // }
     async function onSubmit({ 
+      title, 
+      location, 
+      description,
+      price
+      }) {
+      const photos = store.setProductPhoto.link; 
+      await Api.Products.add({ 
         title, 
         location, 
         description,
-        price}) {
-        const photos = photosLinkList;
-        await Api.Products.add({ 
-            title, 
-            location, 
-            description,
-            photos, 
-            price});
+        photos,
+        price});
       history.push(routes.home);
     }
   return (
     <div className={s.pageBody}>
-      <AddProductForm onSubmit={onSubmit} addPhoto={addPhoto} photosLinkList={photosLinkList}/>
+      <AddProductForm onSubmit={onSubmit} />
     </div>
   );
 }
 
-export default AddProduct;
+export default observer(AddProduct);

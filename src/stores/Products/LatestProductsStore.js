@@ -1,5 +1,4 @@
 import { types } from 'mobx-state-tree';
-import { normalize } from 'normalizr';
 import Api from 'src/api';
 import { LatestProductCollection } from '../schemas';
 import { asyncModel } from '../utils';
@@ -20,10 +19,6 @@ export const LatestProductsStore = types
 function fetchLatest() {
   return async function fetchLatestFlow(flow, store, Root) {
     const res = await Api.Products.fetchLatest();
-
-    const { result, entities } = normalize(res.data, LatestProductCollection)
-    Root.entities.merge(entities);
-
-    store.setItems(result);
+    store.setItems(flow.merge(res.data, LatestProductCollection));
   };
 }

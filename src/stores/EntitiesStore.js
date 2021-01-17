@@ -1,9 +1,11 @@
 import { types } from "mobx-state-tree"
+import { ChatCollection } from "./Chats/ChatCollection"
 import { ProductCollection } from "./Products/ProductsCollection"
 import { UserCollection } from "./Users/UserCollection"
 
 export const EntitiesStore = types.model('EntitiesStore', {
     products: ProductCollection,
+    chats: ChatCollection,
     users: UserCollection,
 }).actions((store) => ({
     merge(entities) {

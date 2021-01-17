@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from 'src/components/Icon';
-import s from './ProductDescription.module.scss';
+import s from './../ProductDescription.module.scss';
 import { UpdateDate } from './UpdateDate';
 
 

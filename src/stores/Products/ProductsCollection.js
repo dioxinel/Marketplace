@@ -1,5 +1,3 @@
-
-import { normalize } from "normalizr";
 import Api from "src/api";
 import { useStore } from "../createStore";
 import { Product } from "../schemas";
@@ -21,18 +19,17 @@ export const ProductCollection = createCollection(ProductModel, {
 function getProduct(id) {
     return async function getProductFlow(flow, store, Root) {
         const product = store.collection.get(id)
-        const log = Api.Auth.isLoggedIn()
-        if(!log) {setTimeout(async() =>{
-            if(!product || !product.owner) {
-                const res = await Api.Products.getProduct(id)
-                const { entities } = normalize(res.data, Product)
-                Root.entities.merge(entities)
-            };
-        }, 100)}
+        // const log = Api.Auth.isLoggedIn()
+        // if(!log) {setTimeout(async() =>{
+        //     if(!product || !product.owner) {
+        //         const res = await Api.Products.getProduct(id)
+        //         flow.merge(res.data, Product)
+               
+        //     };
+        // }, 100)}
         if(!product || !product.owner) {
             const res = await Api.Products.getProduct(id)
-            const { entities } = normalize(res.data, Product)
-            Root.entities.merge(entities)
+            flow.merge(res.data, Product)
         };
         return
     }

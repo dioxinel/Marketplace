@@ -2,8 +2,8 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import { useParams } from 'react-router';
 import { useProductCollection } from 'src/stores/Products/ProductsCollection';
-import { ProductDescription } from './ProductDescription';
-import { RightBar } from './RightBar';
+import { ProductDescription } from './compoonents/ProductDescription';
+import { RightBar } from './compoonents/RightBar/RightBar';
 import s from './ProductDescription.module.scss';
 
 

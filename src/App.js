@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
+import Modal from 'react-modal';
 import Router from './scenes/routes.js';
 import { createStore, Provider } from './stores/createStore.js';
 
 const store = createStore();
 
 function App() {
-  useEffect(() => {
-    store.bootstrap();
-  }, []);
+  store.bootstrap();
+  
   return (
     <main>
       <Provider value={store}>
@@ -16,5 +16,7 @@ function App() {
     </main>
   );
 }
+
+Modal.setAppElement('#modalRoot')
 
 export default App;

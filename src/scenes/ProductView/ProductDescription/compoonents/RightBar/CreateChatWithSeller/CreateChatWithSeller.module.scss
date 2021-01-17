@@ -1,0 +1,152 @@
+@import 'src/nullStyle.scss';
+@import 'src/App.module.scss';
+
+.createChatButton {
+    width: 259px;
+    height: 47px;
+    background-color: #FFF;
+    border: 1px solid #349A89;
+    display: inline-block;
+    margin-top: 9px;
+    font-size: 14px;
+    color: #535353;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    .textContainer {
+        margin-left: 14px;
+    }
+
+    &:hover {
+        opacity: .7;
+    }
+
+    &:active {
+        background-color: grey;
+    }
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    background-color: #FFFFFF;
+    width: 820px;  
+    height: 520px;
+    left: 50%;
+    right: 50%;
+    top: 350px;
+    
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
+    border-radius: 7px;
+    z-index: 1;
+}
+
+.modalContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modalTitle {
+    margin-top: 17px;
+    font-size: 22px;
+    color: #282828;
+    line-height: 25.3px;
+}
+
+.productTitle {
+    margin-top: 29px;
+    font-size: 24px;
+    width: 664px;
+    color: #373738;
+    line-height: 27.6px;
+}
+
+.avatar {
+    display: inline-block;
+    background-color: orange;
+    border-radius: 50%;
+    line-height: 72px;
+    width: 72px;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.messageArea {
+    display: block;
+    background: #F9FAFB;
+    border: 1px solid #DEDEE0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Helvetica;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    padding-left: 22.9px;
+    padding-top: 19px;
+    width: 664px;
+    height: 183px;
+    resize: none;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    margin: 0px;
+    margin-top: 16px;
+    color: #303030;
+    text-transform: uppercase;
+}
+
+.submitBTN {
+    margin: auto;
+    margin-top: 24px;
+    margin-bottom: 34px;
+    display: block;
+    background: #349A89;
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    width: 377px;
+    height: 58px;
+
+
+}
+
+.cross {
+    position: absolute;
+    right: 22.6px;
+    top: 22.6px;
+}
+
+.sellerInfo {
+    display: block;
+    align-items: flex-start;
+    position: relative;
+    height: 72px;
+    width: 664px;
+    margin-top: 16px;
+
+    .userName{
+        position: absolute;
+        font-size: 24px;
+        text-transform: capitalize;
+        left: 88px;
+        top: 12px;
+    }
+
+    .userLocation {
+        color: #2b2b2b;
+        font-size: 15px;
+        position: absolute;
+        top: 44px;
+        left:88px;
+    }
+}

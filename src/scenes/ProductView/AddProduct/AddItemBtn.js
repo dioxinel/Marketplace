@@ -3,14 +3,10 @@ import Icon from 'src/components/Icon';
 
 import s from '../Product.module.scss';
 
-export function AddItemBtn({addItem, photosLinkList}) {
-  function handleClick() {
-    const newLink = prompt('Enter photos link')
-    if (!newLink) return;
-    addItem([...photosLinkList, newLink])
-}
+export function AddItemBtn({handleChange}) {
   return (
-          <div onClick={handleClick} className={s.photosListItem}>
+          <div className={s.photosListItem}>
+            <input type={'file'} onChange={handleChange} className={s.input} id={'file'}></input>
             <Icon name={'plus'} />
           </div>   
   );

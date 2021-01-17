@@ -1,8 +1,9 @@
 import { types } from 'mobx-state-tree';
-import Api from 'src/api';
+import Api, { SocketApi } from 'src/api';
 import { AuthStore } from './Auth/AuthStore';
 import { EntitiesStore } from './EntitiesStore';
 import { LatestProductsStore } from './Products/LatestProductsStore';
+import { SetProductPhotoStore } from './Products/SetProductPhotoStore';
 import { ViewerStore } from './ViewerStore';
 
 export const RootStore = types
@@ -10,6 +11,7 @@ export const RootStore = types
     auth: types.optional(AuthStore, {}),
     viewer: types.optional(ViewerStore, {}),
     latestProducts: types.optional(LatestProductsStore, {}),
+    setProductPhoto: types.optional(SetProductPhotoStore, {}),
 
     entities: types.optional(EntitiesStore, {})
   })
