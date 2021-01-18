@@ -73,5 +73,15 @@ export const Products = {
 export const Chats = {
   createChat(message, id) {
     return axios.post(`/api/products/${id}/createChat`, message)
+  },
+  getList() {
+    return axios.get('/api/chats')
+  },
+  sendMessage(id, text) {
+    return axios.post(`/api/chats/${id}/messages`, { message: text })
+  },
+  getMessages(id) {
+    return axios.get(`/api/chats/${id}/messages`)
   }
+
 }

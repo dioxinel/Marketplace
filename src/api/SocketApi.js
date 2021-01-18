@@ -20,7 +20,7 @@ class SocketApi{
 
     handleMessages(handler) {
         this.socket.on('message', (message) => {
-            handler(JSON.parse(message))
+            handler(message)
         })
     }
 }

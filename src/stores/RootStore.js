@@ -1,6 +1,7 @@
 import { types } from 'mobx-state-tree';
 import Api, { SocketApi } from 'src/api';
 import { AuthStore } from './Auth/AuthStore';
+import { ChatStore } from './Chats/ChatStore';
 import { EntitiesStore } from './EntitiesStore';
 import { LatestProductsStore } from './Products/LatestProductsStore';
 import { SetProductPhotoStore } from './Products/SetProductPhotoStore';
@@ -13,7 +14,9 @@ export const RootStore = types
     latestProducts: types.optional(LatestProductsStore, {}),
     setProductPhoto: types.optional(SetProductPhotoStore, {}),
 
-    entities: types.optional(EntitiesStore, {})
+    chats: types.optional(ChatStore, {}),
+
+    entities: types.optional(EntitiesStore, {}),
   })
   .actions((store) => ({
     async bootstrap() {
@@ -28,4 +31,9 @@ export const RootStore = types
         store.viewer.setIsLoggedIn(true);
       } catch (err) {}
     },
+    subscribeToEvents() {
+      SocketApi.handleMessages((message) => {
+        store.chats.handleMessage(message)
+      })
+    }
   }));

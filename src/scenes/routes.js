@@ -13,6 +13,7 @@ import { ProductView } from './ProductView/ProductDescription/ProductView.js';
 import AddProduct from './ProductView/AddProduct/AddProduct.js';
 import Header from 'src/components/Header/Header';
 import { UserProducts } from './ProductView/UserProducts/UserProducts.js';
+import { InboxView } from './Inbox/InboxView.js';
 
 export const routes = {
   home: '/',
@@ -23,7 +24,8 @@ export const routes = {
   product: '/products/:productId',
   newProduct: '/product/add',
   userProducts: '/user/:userId/products',
-  inbox: '/inbox/:chatId'
+  chat: '/inbox/:chatId',
+  inbox: '/inbox',
 };
 
 export const PrivateRoute = observer(
@@ -51,6 +53,7 @@ function Router() {
         <Route path={routes.product} component={ProductView} />
         <Route path={routes.userProducts} component={UserProducts} />
         <Route path={routes.newProduct} component={AddProduct} />
+        <Route path={routes.inbox} component={InboxView} />
         <PrivateRoute path={routes.auth} component={Auth} />
       </Switch>
     </BrowserRouter>
