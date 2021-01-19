@@ -1,9 +1,11 @@
 import { observer } from 'mobx-react';
+import { getSnapshot } from 'mobx-state-tree';
 import React, { useEffect } from 'react';
-import { generatePath, Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
 import { MessageList } from '../MessageList/MessageList';
 import { routes } from '../routes';
+import { InboxItem } from './InboxItem';
 
 
 
@@ -12,17 +14,13 @@ export const InboxView = observer(() => {
   useEffect(() => {
     chats.fetch.run()
   }, [])
+
   return (
     <div>
       <aside>
         <ul>
           {chats.items.map((item) => {
-          return(<Link 
-            to={generatePath(routes.chat, { chatId: item.id })}
-            key={item.id}
-            >
-            <li>{item.id}</li>
-          </Link>
+          return(<InboxItem item={item} key={item.id} />
       )})}
         </ul>
       </aside>

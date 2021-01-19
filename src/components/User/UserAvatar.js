@@ -10,17 +10,16 @@ export function UserAvatar({user, ...props}) {
       )
     }
     return (
-      <div {...props}>
          <img 
         src={user.avatar} 
-        alt={"Exist"} 
+        alt={"Exist"}
+        {...props}
         />
-      </div>
     );
   } catch (error) {
     return (
       <div>
-        Loading
+        ...Loading
       </div>
     )
   }

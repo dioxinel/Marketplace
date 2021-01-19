@@ -1,0 +1,80 @@
+@import 'src/nullStyle.scss';
+@import 'src/App.module.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+
+.inboxItem{
+    display: flex;
+    width: 540px;
+    height: 107px;
+    margin: 5px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.12);
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    font-family: 'Roboto';
+
+    .userName{
+        font-weight: 500;
+        font-size: 15px;
+        color: #000000;
+    }
+
+    .inboxItemMessage{
+        display: flex;
+        color:rgba(43, 43, 43, 0.499918);
+        font-size: 15px;
+        width: 180px;
+        overflow: hidden;
+        margin-top: 7px;
+
+        .inboxChatIcon{
+            margin-right: 5px;
+        }
+    }
+}
+
+.photo {
+    display: block;
+    width: 47px;
+    height: 47px;
+    margin-right: 8px;
+}
+
+.line {
+    width: 36px;
+    height: 2px;
+    border: 1px solid #E7E9ED;
+    transform: rotate(-90deg);
+}
+
+.productInfo {
+    display: flex;
+    width: 250px;
+    overflow: hidden;
+    color: #000000;
+
+    .productTextInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .price {
+            font-size: 15px;
+            font-weight: 700;   
+        }
+    }
+    
+}
+
+.lastMessageTime {
+    font-size: 15px;
+    color: rgba(43, 43, 43, 0.499918);;
+}
+
+
+

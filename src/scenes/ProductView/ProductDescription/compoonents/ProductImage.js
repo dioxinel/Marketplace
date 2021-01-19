@@ -2,12 +2,19 @@ import React from 'react';
 import s from './../ProductDescription.module.scss';
 
 
-export function ProductImage({product}) {
+export function ProductImage({photoList, className}) {
+  let imageLink;
+  try {
+    imageLink = photoList[0]
+  } catch (error) {
+    imageLink = 'https://argamak-sher.uz/wp-content/uploads/no-image.png'
+  }
     return (
-      <div className={s.productImage}>
+      <div >
         <img 
-        src={product.photos[0]} 
-        alt={"Exist"} 
+        src={imageLink} 
+        alt={"Exist"}
+        className={className}
         />
       </div>
     );

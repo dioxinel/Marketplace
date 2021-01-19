@@ -76,6 +76,24 @@ export const iconsConfig = {
             <rect x="9.37848" y="26.3785" width="4" height="24" rx="2" transform="rotate(-135 9.37848 26.3785)" fill="#349A89"/>
         </svg>
 
+    ),
+
+    'inboxChatIcon': ({...props}) =>(
+        <svg 
+            width="11" 
+            height="11" 
+            viewBox="0 0 11 11" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            {...props}>
+            <path 
+                fillRule="evenodd" 
+                clipRule="evenodd" 
+                d="M1.1 1.1H9.9V7.7H1.7435L1.1 8.3435V1.1ZM1.1 0C0.495 0 0.00549999 0.495 0.00549999 1.1L0 11L2.2 8.8H9.9C10.505 8.8 11 8.305 11 7.7V1.1C11 0.495 10.505 0 9.9 0H1.1ZM2.2 5.5H8.8V6.6H2.2V5.5ZM2.2 3.85H8.8V4.95H2.2V3.85ZM2.2 2.2H8.8V3.3H2.2V2.2Z" 
+                fill="#959595"/>
+        </svg>
+
+
     )
         
         
