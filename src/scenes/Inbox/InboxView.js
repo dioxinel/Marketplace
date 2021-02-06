@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react';
-import { getSnapshot } from 'mobx-state-tree';
+import s from './InboxView.module.scss';
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
-import { MessageList } from '../MessageList/MessageList';
 import { routes } from '../routes';
 import { InboxItem } from './InboxItem';
+import { Chat } from '../Chat/Chat';
+import { AutoSizer, List } from 'react-virtualized';
 
 
 
@@ -16,17 +17,33 @@ export const InboxView = observer(() => {
   }, [])
 
   return (
-    <div>
-      <aside>
-        <ul>
-          {chats.items.map((item) => {
-          return(<InboxItem item={item} key={item.id} />
-      )})}
-        </ul>
+    <div className={s.inboxView}>
+      <div>
+        <aside className={s.aside}>
+          <div  style={{ width: '100%', height: '100vh' }}>
+          <AutoSizer>
+            {({width, height}) => (
+              <List 
+              width={540} 
+              height={height} 
+              rowHeight={107} 
+              rowCount={chats.items.length}
+              className={s.inboxList}
+              rowRenderer={
+              ({ key, index, style, parent }) => {
+                const item = chats.items[index]
+                return (<InboxItem item={item} key={key} style={style}/>)
+              }
+            }/>
+            )}
+          </AutoSizer>
+          </div>
       </aside>
+      </div>
       
-      <main>
-        <Route path={routes.chat} component={MessageList}></Route>
+      
+      <main className={s.chatContainer}>
+        <Route path={routes.chat} component={Chat}></Route>
       </main>
     </div>
     

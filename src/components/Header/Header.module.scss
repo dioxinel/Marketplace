@@ -1,12 +1,48 @@
+@import 'src/nullStyle.scss';
+@import 'src/App.module.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+
 .Header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 18px;
-    margin-left: 6.74%;
-    width: 82.22%;
-    height: 42px; 
+    width: 100%;
+    height: 77px;
+    background: linear-gradient(180deg, #090810 0%, #171236 100%);
+    padding-left: 10%;
+    padding-right: 11%;
 }
+
+
+
+.authHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 77px;
+    padding-left: 10%;
+    padding-right: 11%;
+}
+
+.productHeader {
+    width: 100%;
+    height: 166px;
+    background: linear-gradient(180deg, #090810 0%, #171236 100%);
+
+    .headerContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 77px;
+        padding-left: 10%;
+        padding-right: 11%;
+    }
+}
+
 
 
 .Logo {
@@ -27,6 +63,7 @@ button {
     font-size: 14px;
     width: 131px;
     margin-right: 33px;
+    margin-left: 18px;
     line-height: 31px;
 }
 
@@ -35,9 +72,7 @@ button {
     line-height: 40px;
     font-size: 12px;
     margin-right: 40px;
-    &:hover {
-        background: white;
-    }
+    text-transform: uppercase;
 }
 
 .right {
@@ -46,10 +81,115 @@ button {
 }
 
 .avatar {
+    display: inline-block;
     background-color: orange;
-    border-radius: 50%;
     line-height: 40px;
     width: 40px;
+    font-size: 30px;
+    font-weight: 600;
     text-transform: capitalize;
     text-align: center;
 }
+
+.avatarContainer {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    margin-right: 56px; 
+}
+
+.dropDownMenu {
+    position: absolute;
+    background: #FFFFFF;
+    width: 204px;
+    height: 150px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    right: 165px;
+    top: 64px;
+    z-index: 1;
+
+    .userInfo {
+        display: flex;
+        font-size: 10px;
+        height: 57px;
+        width: 204px;
+        padding-top: 9px;
+        padding-left: 16px;
+
+        .avatarContainer {
+            width: 48px;
+            height: 46px;
+            margin: 0;
+        }
+
+        .avatar {
+            display: inline-block;
+            background-color: orange;
+            line-height: 40px;
+            width: 48px;
+            font-size: 30px;
+            font-weight: 600;
+            text-transform: capitalize;
+            text-align: center;
+            
+        }
+
+        .userTextInfo {
+            margin-left: 13px;
+
+            .fullName {
+                color: black;
+                letter-spacing: 1px;
+                font-weight: 900;
+            }
+
+            .email {
+                color: #979797;
+                letter-spacing: 1px;
+            }
+
+            .profile {
+                color: #349A89;
+                letter-spacing: 1px;
+                font-weight: 900;
+                margin-top: 5px;
+            }
+        }
+    }
+    
+
+    .editContainer {
+        width: 204px;
+        height: 52px;
+        padding-left: 16px;
+        padding-top: 19px;
+        .editProfile {
+            color: #349A89;
+            text-transform: uppercase;
+            font-family: roboto;
+            font-size: 14px;
+        }
+    }
+
+
+    .logoutContainer {
+        width: 204px;
+        height: 43px;
+        padding-left: 16px;
+        padding-top: 14px;
+        border-top: 1px solid #E4E4E4;
+
+        .logout {
+            color: #349A89;
+            text-transform: uppercase;
+            font-family: roboto;
+            font-size: 14px;     
+        }
+    }
+
+    
+
+}
+

@@ -4,10 +4,9 @@ import Router from './scenes/routes.js';
 import { createStore, Provider } from './stores/createStore.js';
 
 const store = createStore();
-
+store.bootstrap()
 function App() {
-  store.bootstrap();
-  
+
   return (
     <main>
       <Provider value={store}>

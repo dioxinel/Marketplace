@@ -1,0 +1,26 @@
+@import 'src/nullStyle.scss';
+@import 'src/App.module.scss';
+
+
+
+.avatar {
+    display: inline-block;
+    background-color: orange;
+    line-height: 72px;
+    width: 72px;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.avatarContainer {
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    overflow: hidden; 
+}
+
+.avatarInputField {
+    display: none;
+}

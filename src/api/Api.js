@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { get } from 'mobx';
 
 export const Auth = {
   _token: null,
@@ -40,6 +41,9 @@ export const Account = {
   getUserById(id) {
     return axios.get(`/api/users/${id}`);
   },
+  editProfile({ fullName, avatar, phone, location }) {
+    return axios.put(`/api/account`, { fullName, avatar, phone, location });
+  },
 };
 
 export const Products = {
@@ -68,6 +72,22 @@ export const Products = {
   fetchOwnProducts(id) {
     return axios.get(`/api/users/${id}/products`)
   },
+  search({  keywords, location, priceFrom, priceTo }) {
+    let link = '/api/products/search?';
+    if(keywords) {
+      link = link +  `&keywords=${keywords}`
+    }
+    if(location) {
+      link = link +  `&location=${location}`
+    }
+    if(priceFrom) {
+      link = link +  `&priceFrom=${priceFrom}`
+    }
+    if(priceTo) {
+      link = link +  `&priceTo=${priceTo}`
+    }
+    return axios.get(link)
+  }
 };
 
 export const Chats = {
@@ -80,8 +100,13 @@ export const Chats = {
   sendMessage(id, text) {
     return axios.post(`/api/chats/${id}/messages`, { message: text })
   },
-  getMessages(id) {
-    return axios.get(`/api/chats/${id}/messages`)
-  }
+  getMessages(id, lastItemId) {
+    console.log(lastItemId)
+    if (lastItemId) {
+      return axios.get(`/api/chats/${id}/messages?from=${lastItemId}&limit=20`);
+    }
+    return axios.get(`/api/chats/${id}/messages?limit=20`)
+  },
+  
 
 }

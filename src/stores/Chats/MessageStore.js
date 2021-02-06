@@ -1,4 +1,4 @@
-import { getParent, types } from 'mobx-state-tree';
+import { getParent, getRoot, getSnapshot, types } from 'mobx-state-tree';
 import Api from 'src/api';
 import { MessageCollectionSchema, MessageSchema } from '../schemas';
 import { asyncModel } from '../utils';
@@ -7,7 +7,8 @@ import { MessageModel } from './MessageModel';
 export const MessageStore = types.model('MessageStore', {
   items: types.array(types.reference(MessageModel)),
 
-  fetch: asyncModel(fetchMessages)
+  fetch: asyncModel(fetchMessages),
+  messagesCount: types.optional(types.number, 10)
 })
 .views(store => ({
     get asList() {
@@ -27,21 +28,44 @@ export const MessageStore = types.model('MessageStore', {
       store.items.unshift(result)
     },
 
-    runInAction(cb) {
-        cb(store);
-    },
+   setMessagesCount(num) {
+    store.messagesCount = num;
+   },
+
+    setItems(value) {
+      store.items = value
+    }
 
   }))
 
 
 function fetchMessages() {
     return async function fetchMessagesFlow(flow, store) {
-        const res = await Api.Chats.getMessages(store.chatId)
+      let lastItemId;
+      try {
+        lastItemId = store.items[store.items.length - 1].id;
+        
+      } catch {
+        
+      }finally {
+        const res = await Api.Chats.getMessages(store.chatId, lastItemId)
 
-        const result = flow.merge(res.data, MessageCollectionSchema)
+        const result = flow.merge(res.data, MessageCollectionSchema);
+        
+        if(store.items.length) {
+          if(store.items[0].id === result[0]){
+            return
+          }
+        }
+        store.setItems([...store.items, ...result]);
+        if (result.length !== 20) {
+          store.setMessagesCount(store.items.length)
+          return
+        }
 
-        store.runInAction((self) => {
-            self.items = result;
-        })
+        store.setMessagesCount(store.messagesCount + 20)
+      }
+        
     }
 }
+

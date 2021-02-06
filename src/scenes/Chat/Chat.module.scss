@@ -1,0 +1,87 @@
+@import 'src/nullStyle.scss';
+@import 'src/App.module.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+
+.chat {
+    
+    width: 100%;
+    height: 100%;
+    background: #F8F8F8;
+    
+}
+
+.list {
+    height: calc(100vh - 150px);
+    padding: 10px 10px 0;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    display: inline-block;
+    background-color: orange;
+    border-radius: 50%;
+    line-height: 45px;
+    width: 45px;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.photo {
+    display: block;
+    width: 41px;
+    height: 41px;
+}
+
+.messageArea {
+    display: block;
+    background: #F9FAFB;
+    border: 1px solid #DEDEE0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Helvetica;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    padding-left: 22.9px;
+    padding-top: 19px;
+    width: 664px;
+    height: 183px;
+    resize: none;
+}
+
+.messageList {
+    display: flex;
+    flex-direction: column;
+}
+
+.ownMessage {
+    display: inline-block;
+    padding: 10px;
+    background: #FFFFFF;
+    width: 300px;
+    overflow: hidden;
+    padding: 6px 12px 6px 12px;
+    margin-left: 50%;
+}
+
+.notOwnMessage {
+    display: inline-block;
+    background: #349A89;
+    color: #FFFFFF;
+    padding: 10px;
+    width: 300px;
+    padding: 6px 12px 6px 12px;
+    overflow: hidden;
+   
+    
+}
+.chatHeader {
+    display: flex;
+}
+
+.message {
+    padding-bottom: 10px;
+}

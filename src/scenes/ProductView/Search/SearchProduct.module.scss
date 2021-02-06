@@ -1,0 +1,77 @@
+.pageBody{
+    font-style: helvetic;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ul{
+        padding: 0px;
+    }
+}
+.productsList {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 861px;
+}
+
+.formContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 89px;
+}
+
+.searchForm {
+    display: flex;
+    margin-bottom: 14px;
+    .keywordsField {
+        display: flex;
+        align-items: center;
+        padding-left: 21px;
+        background-color: #FFFFFF;
+        width: 467px;
+        height: 50px;
+        border-radius: 4px;
+        margin-right: 7px;
+    }
+
+    .keywordsField input {
+        font-size: 15px;
+        margin-left: 19px;
+        margin-bottom: 16px;
+        width: 360px;
+        color: #7B7B7B;
+    }
+
+    .locationField {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        background-color: #FFFFFF;
+        width: 198px;
+        height: 50px;
+        border-radius: 4px;
+        margin-right: 7px;
+    }
+
+    .locationField input {
+        font-size: 15px;
+        margin-left: 19px;
+        margin-bottom: 16px;
+        width: 125px;
+        color: #7B7B7B;
+    }
+
+    .searchButton {
+        width: 176px;
+        height: 50px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        background: #3E3961;
+        border-radius: 4px;
+    }
+}
+
+
+
+

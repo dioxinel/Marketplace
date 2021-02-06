@@ -1,24 +1,21 @@
 import { observer } from 'mobx-react';
-import { getSnapshot } from 'mobx-state-tree';
 import React from 'react';
 import { generatePath, Link } from 'react-router-dom';
 import Icon from 'src/components/Icon';
-import { UserAvatar } from 'src/components/User/UserAvatar';
 import { useStore } from 'src/stores/createStore';
-import { Product } from 'src/stores/schemas';
 import { ProductImage } from '../ProductView/ProductDescription/compoonents/ProductImage';
 import { UpdateDate } from '../ProductView/ProductDescription/compoonents/UpdateDate';
 import { routes } from '../routes';
 import s from './InboxView.module.scss';
 
-export const InboxItem = observer(({item}) => {
+export const InboxItem = observer(({item, ...props}) => {
     const store = useStore((store) => store.chats)
     const chat = store.getById(item.id)
-    // console.log(getSnapshot(chat.message))
   return (
         <Link 
             to={generatePath(routes.chat, { chatId: item.id })}
             className={s.inboxItem}
+            {...props}
             >
             <div>
                 <div className={s.userName}>{chat.user.fullName}</div>

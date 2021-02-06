@@ -12,4 +12,8 @@ export const UserModel = types.model('UserModel', {
   email: types.maybeNull(types.string),
 
   ownProducts: types.optional(OwnProductsStore, {})
-});
+}).actions((store) => ({
+  setAvatar(link) {
+    store.avatar = link;
+  }
+}));

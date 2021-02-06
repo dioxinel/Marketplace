@@ -14,6 +14,8 @@ import AddProduct from './ProductView/AddProduct/AddProduct.js';
 import Header from 'src/components/Header/Header';
 import { UserProducts } from './ProductView/UserProducts/UserProducts.js';
 import { InboxView } from './Inbox/InboxView.js';
+import { EditProfileView } from './EditProfile/EditProfileView.js';
+
 
 export const routes = {
   home: '/',
@@ -26,6 +28,8 @@ export const routes = {
   userProducts: '/user/:userId/products',
   chat: '/inbox/:chatId',
   inbox: '/inbox',
+  editProfile: '/user/edit-profile',
+  searchProducts: '/products/search'
 };
 
 export const PrivateRoute = observer(
@@ -45,6 +49,7 @@ export const PrivateRoute = observer(
 );
 
 function Router() {
+
   return (
     <BrowserRouter>
       <Header />
@@ -54,6 +59,7 @@ function Router() {
         <Route path={routes.userProducts} component={UserProducts} />
         <Route path={routes.newProduct} component={AddProduct} />
         <Route path={routes.inbox} component={InboxView} />
+        <Route path={routes.editProfile} component={EditProfileView} />
         <PrivateRoute path={routes.auth} component={Auth} />
       </Switch>
     </BrowserRouter>
