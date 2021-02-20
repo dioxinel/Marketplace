@@ -41,8 +41,8 @@ export const Account = {
   getUserById(id) {
     return axios.get(`/api/users/${id}`);
   },
-  editProfile({ fullName, avatar, phone, location }) {
-    return axios.put(`/api/account`, { fullName, avatar, phone, location });
+  editProfile({ fullName, avatar, phone }) {
+    return axios.put(`/api/account`, { fullName, avatar, phone });
   },
 };
 
@@ -73,9 +73,10 @@ export const Products = {
     return axios.get(`/api/users/${id}/products`)
   },
   search({  keywords, location, priceFrom, priceTo }) {
+    if(!keywords && !location)return;
     let link = '/api/products/search?';
     if(keywords) {
-      link = link +  `&keywords=${keywords}`
+      link = link +  `keywords=${keywords}`
     }
     if(location) {
       link = link +  `&location=${location}`
@@ -86,6 +87,7 @@ export const Products = {
     if(priceTo) {
       link = link +  `&priceTo=${priceTo}`
     }
+    link = link + `&offset=0&limit=20`
     return axios.get(link)
   }
 };

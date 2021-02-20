@@ -18,11 +18,16 @@
     margin-bottom: 10px;
 }
 
+// .messages::-webkit-scrollbar {
+//     display: none;
+// }
+
 .avatar {
     display: inline-block;
     background-color: orange;
     border-radius: 50%;
     line-height: 45px;
+    height: 45px;
     width: 45px;
     font-size: 20px;
     text-transform: capitalize;
@@ -80,8 +85,73 @@
 }
 .chatHeader {
     display: flex;
+    align-items: center;
+    width: 100%;
+    height: 72px;
+    background-color: #FFFFFF;
+    border-bottom: 2px solid #E7E9ED;
+    padding-left: 17px;
+
+    p  {
+        cursor: default;
+        margin-left: 16px;
+        margin-right: 52px;
+        font-family: 'Roboto';
+        font-size: 15px;
+    }
+
+    .productInfo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 212px;
+        height: 62px;
+        background: #F8F8F8;
+        border-radius: 5px;
+        padding-left: 13px;
+        padding-right: 9px;
+
+        img {
+            margin-right: 9px;
+        }
+
+        .price {
+            margin-top: 6px;
+            font-family: 'Roboto';
+            font-size: 15px;
+            font-weight: 700;   
+        }
+
+        .productInfoContainer {
+            display: flex;
+        }
+    }
 }
 
 .message {
     padding-bottom: 10px;
+}
+
+.messageInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    border: 1px solid #E9EBF2;
+    box-sizing: border-box;
+    height: 55px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    padding-left: 20px;
+    padding-right: 12px;
+
+    input {
+
+        width: auto;
+    }
+
+    .clip {
+        margin-left :12px
+    }
 }

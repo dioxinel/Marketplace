@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Header.module.scss';
 import Icon from '../Icon';
 import { useStore } from 'src/stores/createStore';
-
 import { observer } from 'mobx-react';
 import Api from 'src/api';
 import 'mobx-react-lite/batchingForReactDom';
@@ -10,12 +9,11 @@ import { SellButton } from './SellButton';
 import { Logo } from './Logo';
 import { useHistory } from 'react-router';
 import { routes } from 'src/scenes/routes';
-
-import ProductSearch from 'src/scenes/ProductView/Search/ProductSearch';
+import SearchProduct from 'src/scenes/ProductView/Search/SearchProduct';
 import { DropDownMenu } from './DropDownMenu';
 import { Link } from 'react-router-dom';
 
-function Header() {
+function ProductHeader() {
   const store = useStore();
   const history = useHistory()
 
@@ -32,7 +30,7 @@ function Header() {
             <Icon name={'saved-dt'} className={s.Like} />
           </div>
         </div>
-        <ProductSearch />
+        <SearchProduct />
       </div>
       </div>
     );
@@ -52,9 +50,9 @@ function Header() {
           <Icon name={'saved'} className={s.Like} />
         </div>
       </div>
-      <ProductSearch />
+      <SearchProduct />
     </div>
   );
 }
 
-export default observer(Header);
+export default observer(ProductHeader);

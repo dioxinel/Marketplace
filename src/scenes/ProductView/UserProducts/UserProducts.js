@@ -3,6 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import { useUserCollection } from 'src/stores/Users/UserCollection';
 import ProductsListItem from '../ProductsListItem';
+import { UserProfileInfo } from './UserProfileInfo';
 import s from './UserProducts.module.scss';
 
 export const UserProducts = observer(() => {
@@ -14,6 +15,7 @@ export const UserProducts = observer(() => {
     user.ownProducts.fetch.run()
     return (
       <div className={s.pageBody}>
+        <UserProfileInfo user={user}/>
         <ul className={s.productsList}>
           {user.ownProducts.items.map((item) => {
             return (

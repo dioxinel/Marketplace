@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useStore } from 'src/stores/createStore';
 import { ProductInfo } from './ProductInfo';
-import { UserInfo } from './UserInfo';
 import s from './../Chat.module.scss';
+import { UserAvatar } from 'src/components/User/UserAvatar';
 
 export const ChatHeader = observer(() => {
   const { chatId } = useParams()
@@ -21,7 +21,8 @@ export const ChatHeader = observer(() => {
   
   return (
     <div className={s.chatHeader}>
-      <UserInfo user={chat.user}/>
+      <UserAvatar user={chat.user} containerClass={s.avatarContainer} className={s.avatar}/>
+      <p>{chat.user.fullName}</p> 
       <ProductInfo product={chat.product} />
     </div>
     

@@ -1,26 +1,119 @@
 @import 'src/nullStyle.scss';
 @import 'src/App.module.scss';
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
+.pageBody {
+    display: flex;
+    justify-content: center;
+}
+
+.editProfile {
+    width: 498px;
+    height: 493px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 34px;
+
+    .title {
+        font-family: 'Roboto';
+        font-size: 22px;
+        color: #282828;
+        margin-top: 36px;
+    }
+
+}
 
 .avatar {
     display: inline-block;
     background-color: orange;
-    line-height: 72px;
-    width: 72px;
+    height: 102px;
+    width: 102px;
     font-size: 30px;
     font-weight: 600;
     text-transform: capitalize;
     text-align: center;
+    border-radius: 50%;
+ 
 }
 
-.avatarContainer {
-    border-radius: 50%;
-    width: 72px;
-    height: 72px;
-    overflow: hidden; 
-}
 
 .avatarInputField {
     display: none;
+}
+.imageInputButton {
+    position: absolute;
+    cursor: pointer;
+    width: 104px;
+    height: 23px;
+    background: #FFFFFF;
+    border: 1px solid #349A89;
+    box-sizing: border-box;
+    border-radius: 5px;
+    z-index: 10;
+    margin-top: -28px;
+    text-transform: capitalize;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #349A89;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.editProfileForm {
+    margin-top: 21px;
+    margin-bottom: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.textInput {
+    display: block;
+    background: #F9FAFB;
+    border: 1px solid #DEDEE0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Helvetica;
+    line-height: 18px;
+    letter-spacing: 0.4px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    width: 377px;
+    height: 58px;
+    padding-left: 13px;
+    padding-right: 13px;
+
+    label {
+        display: block;
+        font-size: 12px;
+        margin: 0px;
+    }
+}
+
+.editProfileSubmit {
+    background: #349A89;
+    border-radius: 5px;
+    width: 377px;
+    height: 58px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    margin-top: 25px;
 }

@@ -13,4 +13,36 @@
 }
 
 
+.userProfileInfo {
+    margin-top: 15px;
+
+    .avatar {
+        display: inline-block;
+        background-color: orange;
+        height: 95px;
+        width: 95px;
+        font-size: 30px;
+        font-weight: 600;
+        text-transform: capitalize;
+        text-align: center;
+        border-radius: 50%;
+     
+    }
+    
+    .fullName {
+        margin-top: 17px;
+        margin-bottom: 60px;
+        color: #141414;
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+    }
+    
+
+}
+
+
 

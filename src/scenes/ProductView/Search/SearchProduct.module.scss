@@ -1,3 +1,9 @@
+@import 'src/nullStyle.scss';
+@import 'src/App.module.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+
 .pageBody{
     font-style: helvetic;
     display: flex;
@@ -18,25 +24,34 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 89px;
+    
 }
 
 .searchForm {
     display: flex;
-    margin-bottom: 14px;
+    margin-top: 25px;
+
+    .keywordsFieldContainer {
+        background-color: #FFFFFF;
+        width: 467px;
+        border-radius: 4px;
+        margin-right: 7px;
+        z-index: 2;
+        box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+    }
+
     .keywordsField {
         display: flex;
         align-items: center;
         padding-left: 21px;
-        background-color: #FFFFFF;
-        width: 467px;
         height: 50px;
-        border-radius: 4px;
-        margin-right: 7px;
+        border-radius: 4px; 
     }
 
     .keywordsField input {
         font-size: 15px;
+        line-height: 31px;
+        margin-top: 12px;
         margin-left: 19px;
         margin-bottom: 16px;
         width: 360px;
@@ -55,6 +70,8 @@
     }
 
     .locationField input {
+        line-height: 31px;
+        margin-top: 12px;
         font-size: 15px;
         margin-left: 19px;
         margin-bottom: 16px;
@@ -62,13 +79,148 @@
         color: #7B7B7B;
     }
 
-    .searchButton {
-        width: 176px;
-        height: 50px;
-        text-transform: uppercase;
-        color: #FFFFFF;
-        background: #3E3961;
-        border-radius: 4px;
+    
+}
+.searchButton {
+
+    width: 176px;
+    height: 50px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #3E3961;
+    border-radius: 4px;
+}
+
+.dropDown {
+    border-top: 2px solid #DEDEE0;
+}
+
+.fastSearchItem {
+    display: flex;
+    height: 59px;
+    align-items: center;
+    padding-left: 16px;
+
+    .productImage {
+        display: block;
+        width: 47px;
+        height: 47px;
+    }
+
+    .textInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 8px;
+
+        .productTitle {
+            font-size: 15px;
+            font-family: "Roboto"; 
+        }
+    
+        .itemPrice {
+            cursor: default;
+            font-size: 15px;
+            font-weight: 900;
+            font-family: "Roboto";
+            color: #101010;         
+        }
+    }   
+}
+
+.recentSearches {
+    border-top: 1px solid #DEDEE0;
+
+    .recentSearchesHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 7px;
+        margin-left: 16px;
+        margin-right: 10px;
+        height: 31px;
+
+        .title {
+            cursor: default;
+            font-family: 'Roboto';
+            font-size: 12px;
+            color: #CECECE;
+        }
+
+        .clearAll {
+            cursor: pointer;
+            font-family: 'Roboto';
+            font-size: 12px;
+            color: #349A89;
+        }
+    }
+
+    .recentSearchesItem {
+        height: 31px;
+        display: flex;
+        align-items: center;
+        margin-left: 16px;
+
+        & p {
+            margin-left: 10px;
+        }
+    }
+}
+
+.priceRange {
+    width: 100%;
+    display: flex;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.217111);
+    border-radius: 4px;
+    height: 59px;
+    margin-top: 19px;
+    margin-bottom: 18px;
+    align-items: center;
+     
+    input {
+        width:143px;
+        height: 35px;
+        background: #F9FAFB;
+        border: 1px solid #DEDEE0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        padding-left: 9px;
+        color: #505050;
+        font-size: 14px;
+    }
+
+    .hyphen {
+        margin-left: 7px;
+        margin-right: 7px;
+        border: 1px solid #DEDEE0;
+        width: 12px
+    }
+
+    .choseCategory {
+        display: flex;
+        width: 235px;
+        height: 35px;
+        background: #F9FAFB;
+        border: 1px solid #DEDEE0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        cursor: default;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 11px;
+        padding-right: 7px;
+        margin-left: 11px;
+        margin-right: 23px;
+
+        & p {
+            font-family: Helvetica;
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: 0.35px;
+            color: #505050;
+            margin-right: 50px;
+        }   
     }
 }
 

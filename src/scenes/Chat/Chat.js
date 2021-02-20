@@ -6,6 +6,7 @@ import { useStore } from 'src/stores/createStore';
 import { observer } from 'mobx-react';
 import s from './Chat.module.scss';
 import {MessageList} from './components/MessageList';
+import Icon from 'src/components/Icon';
 
 export const Chat = observer(() => {
     const { chatId } = useParams()
@@ -19,28 +20,28 @@ export const Chat = observer(() => {
       }
     }, [chat])
 
-    if (!chat) {
+    if (!chat.messages) {
         return (<div>...Loading</div>)
     }
-
 
     function handleChange(evt) {
         setMessage(evt.target.value)
       }
     
-      function handleSend() { 
-        
-        chat.messages.addMessage({
-          id: Math.random(),
-          chatId: chat.id,
-          ownerId: store.viewer.user.id,
-          text: message,
-          read: false,
-          createdAt: new Date() + '',
-          updatedAt: new Date() + ''
-        })   
-        chat.sendMessage.run(message)
-        setMessage('')
+      function handleSend(e) {
+        if (e.key === 'Enter') {
+          chat.messages.addMessage({
+            id: Math.random(),
+            chatId: chat.id,
+            ownerId: store.viewer.user.id,
+            text: message,
+            read: false,
+            createdAt: new Date() + '',
+            updatedAt: new Date() + ''
+          })   
+          chat.sendMessage.run(message)
+          setMessage('') 
+        }
       }
 
   return (
@@ -48,12 +49,21 @@ export const Chat = observer(() => {
         <ChatHeader />
         <MessageList chat={chat} />
         <main>
-        <textarea id={'messageArea'} value={message} onChange={handleChange}>
-
-        </textarea>
-            <button onClick={handleSend}>Send</button>
-        </main>
-        
+          <div className={s.messageInput}>
+            <input
+              id={'messageArea'} 
+              value={message} 
+              onChange={handleChange}
+              placeholder={'Type your message here...'}
+              onKeyDown={handleSend}
+              > 
+            </input>
+          <div>
+            <Icon name={'smiley'} />
+            <Icon name={'clip'} className={s.clip}/>
+          </div>         
+        </div>
+        </main>       
       </div>
   )
 })

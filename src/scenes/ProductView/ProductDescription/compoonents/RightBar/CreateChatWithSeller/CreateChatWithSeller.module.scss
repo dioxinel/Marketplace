@@ -38,11 +38,11 @@
     left: 50%;
     right: 50%;
     top: 350px;
-    
+    z-index: 3;
     transform: translate(-50%, -50%);
     box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
     border-radius: 7px;
-    z-index: 1;
+    
 }
 
 .modalContainer {

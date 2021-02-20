@@ -5,7 +5,7 @@
 
 
 .inboxList {
-
+    border-right: 2px solid #E7E9ED;
     &::-webkit-scrollbar {
         width: 0;
     }
@@ -31,7 +31,6 @@
     display: flex;
     width: 540px;
     height: 107px;
-    margin: 5px;
     background: #FFFFFF;
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.12);
     align-items: center;
@@ -84,6 +83,8 @@
     overflow: hidden;
     color: #000000;
 
+    
+
     .productTextInfo {
         display: flex;
         flex-direction: column;
@@ -95,6 +96,10 @@
         }
     }
     
+}
+
+.productInfoContainer {
+    display: flex;
 }
 
 .lastMessageTime {

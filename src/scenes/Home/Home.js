@@ -2,6 +2,7 @@ import { observer } from 'mobx-react';
 import React, { useEffect } from 'react';
 import { useStore } from 'src/stores/createStore';
 import ProductsListItem from '../ProductView/ProductsListItem';
+import { PriceRange } from '../ProductView/Search/components/PriceRange';
 import s from './Home.module.scss';
 
 function Home() {
@@ -12,6 +13,7 @@ function Home() {
   return (
     <div className={s.pageBody}>
       <ul className={s.productsList}>
+      <PriceRange />
         {store.latestProducts.items.map((item) => {
           return (
             <ProductsListItem item={item} key={item.id}/>

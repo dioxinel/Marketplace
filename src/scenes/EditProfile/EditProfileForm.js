@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { Formik } from 'formik';
-import { useHistory } from 'react-router';
-import { routes } from 'src/scenes/routes';
 import { Input } from 'src/components/Form/Input/Input';
 import { SubmitBTN } from 'src/components/Form/Button/SubmitBtn';
 import Api from 'src/api';
@@ -16,19 +14,16 @@ export const EditProfileForm = observer(() => {
     useEffect(()=>{if (user) {
       document.getElementById('fullName').value = user.fullName
       document.getElementById('phone').value = user.phone
-      document.getElementById('location').value = user.location
     }}, [user])
   async function onSubmit({
     fullName,
     phone,
-    location,
   }) {
     const avatar = document.getElementById('avatar').value
     const res = await Api.Account.editProfile({ 
         fullName,
         avatar,
-        phone,
-        location, });
+        phone,});
   }
 
   async function handleAddPhoto(e) {
@@ -57,7 +52,6 @@ const formikProps = {
     initialValues:  {
     fullName: '',
     phone: '',
-    location: '',
     },
     onSubmit
 }
@@ -66,9 +60,16 @@ const formikProps = {
     <div>
       <Formik {...formikProps}>
         <form>
-        <div>
-            <UserAvatar user={user} containerClass={s.avatarContainer} className={s.avatar}/>
-            <input type={'file'} onChange={handleAddPhoto} id={'file'}></input>
+        <div className={s.editProfileForm}>
+          <div>
+            <UserAvatar user={user} className={s.avatar}/>
+            <label >
+              <div className={s.imageInputButton}>
+                Upgrade Photo
+              </div>
+              <input type={'file'} onChange={handleAddPhoto} id={'file'}></input>
+            </label>
+          </div> 
             <Input
               name="avatar"
               id={'avatar'}
@@ -81,6 +82,7 @@ const formikProps = {
               label="FULL NAME"
               id={'fullName'}
               placeholder={'Tony Stark'}
+              className={s.textInput} 
               
             />
           </div>
@@ -89,16 +91,10 @@ const formikProps = {
               name="phone"
               label="phone"
               id={'phone'}
+              className={s.textInput} 
             />
           </div>
-          <div>
-            <Input
-              name="location"
-              label="location"
-              id={'location'}
-            />
-          </div>
-          <SubmitBTN name={'Edit'} id={'submit'}/>
+          <SubmitBTN name={'Edit'} id={'submit'} className={s.editProfileSubmit}/>
         </form>
       </Formik>
     </div>

@@ -8,30 +8,23 @@ import { getSnapshot } from 'mobx-state-tree';
 
 
 export const MessageList = observer(({ chat }) => {
-
-  const [list, setList] = useState(false)
-
-  
   const cb = useCallback(() => {
     if(chat.messages.fetch.isLoading)return;
-    console.log(chat.messages.messagesCount === chat.messages.items.length)
     if(chat.messages.messagesCount === chat.messages.items.length)return;
     setTimeout(()=>{chat.messages.fetch.run()}, 1000)
   })
-
 
   const cache = useRef(new CellMeasurerCache({
     fixedWidth: true,
     defaultHeight: 200,
   }))
 
-  function reRender() {
-    setTimeout(()=>{setList("1")}, 100)
+  if(!chat.messages.items.length) {
+    return (<div>Loading</div>)
   }
 
   const rowRenderer = ({ key, index, style, parent }) => {
     const item = chat.messages.items[index]
-    
     if ( chat.messages.items.length === index + 1) {
       return (
       <CellMeasurer
@@ -66,7 +59,7 @@ export const MessageList = observer(({ chat }) => {
       </CellMeasurer>
     )}
     return (
-      <div className={s.list}>
+      <div className={s.list} style={{ width: '100%', height: '56vh' }}>
         <AutoSizer>
         {({ width, height }) => {
             return (
@@ -78,11 +71,12 @@ export const MessageList = observer(({ chat }) => {
                 overscanRowCount={2}
                 rowCount={chat.messages.items.length} 
                 rowRenderer={rowRenderer}
+                className={s.messages}
+                id={'messageList'}
           />
             )}}
           
         </AutoSizer>
-        
       </div>
         );
         })

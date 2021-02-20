@@ -15,16 +15,16 @@ export const InboxView = observer(() => {
   useEffect(() => {
     chats.fetch.run()
   }, [])
-
+  if(chats.items.length === 0) return (<div>Loading</div>)
   return (
     <div className={s.inboxView}>
       <div>
         <aside className={s.aside}>
-          <div  style={{ width: '100%', height: '100vh' }}>
+          <div  style={{ width: '100%', height: '76vh' }}>
           <AutoSizer>
             {({width, height}) => (
               <List 
-              width={540} 
+              width={width} 
               height={height} 
               rowHeight={107} 
               rowCount={chats.items.length}
