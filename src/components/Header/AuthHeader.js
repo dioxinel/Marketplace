@@ -21,7 +21,10 @@ function AuthHeader() {
           >
           Login
         </Link>
-        <Icon name={'saved'} className={s.Like} />
+        <Link to={routes.savedProducts}>
+          <Icon name={'saved'} className={s.Like} />
+        </Link>
+        
       </div>
   </div>
   );

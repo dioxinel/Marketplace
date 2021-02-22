@@ -1,18 +1,21 @@
 import { observer } from 'mobx-react';
 import React, { Component, useCallback, useEffect, useRef, useState } from 'react';
-import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized';
+import { AutoSizer, CellMeasurer, CellMeasurerCache, InfiniteLoader, List } from 'react-virtualized';
 import { Message } from './Message';
 import s from './../Chat.module.scss';
 import { useStore } from 'src/stores/createStore';
 import { getSnapshot } from 'mobx-state-tree';
+import Skeleton from 'react-loading-skeleton';
 
 
 export const MessageList = observer(({ chat }) => {
-  const cb = useCallback(() => {
-    if(chat.messages.fetch.isLoading)return;
-    if(chat.messages.messagesCount === chat.messages.items.length)return;
-    setTimeout(()=>{chat.messages.fetch.run()}, 1000)
-  })
+  let promiseResolve;
+  function loadMoreRows() {
+    chat.messages.fetch.run()
+    return new Promise((resolve, reject) => {
+      promiseResolve = resolve;
+    });
+  }
 
   const cache = useRef(new CellMeasurerCache({
     fixedWidth: true,
@@ -20,29 +23,16 @@ export const MessageList = observer(({ chat }) => {
   }))
 
   if(!chat.messages.items.length) {
-    return (<div>Loading</div>)
+    return (
+      <div style={{ width: '100%', height: '57vh', fontSize: '57vh' }}>
+        <Skeleton/>
+      </div>)
   }
+
+  
 
   const rowRenderer = ({ key, index, style, parent }) => {
     const item = chat.messages.items[index]
-    if ( chat.messages.items.length === index + 1) {
-      return (
-      <CellMeasurer
-        cache={cache.current}
-        columnIndex={0}
-        key={key}
-        parent={parent}
-        rowIndex={index}
-      >
-         {({ measure, registerChild }) => (
-          <div style={style} key={key} ref={registerChild} className={s.message}>
-            <Message item={item} cb={cb} onLoad={measure}/>
-          </div>
-        )}
-          
-      </CellMeasurer>
-      )
-    } 
     return (
       <CellMeasurer
         cache={cache.current}
@@ -58,26 +48,38 @@ export const MessageList = observer(({ chat }) => {
         )}
       </CellMeasurer>
     )}
-    return (
-      <div className={s.list} style={{ width: '100%', height: '56vh' }}>
-        <AutoSizer>
-        {({ width, height }) => {
-            return (
-              <List
-                width={width} 
-                height={height} 
-                rowHeight={cache.current.rowHeight}
-                deferredMeasurementCache={cache.current}
-                overscanRowCount={2}
-                rowCount={chat.messages.items.length} 
-                rowRenderer={rowRenderer}
-                className={s.messages}
-                id={'messageList'}
-          />
-            )}}
-          
-        </AutoSizer>
-      </div>
-        );
-        })
-        
+  return (
+    <InfiniteLoader
+        isRowLoaded={({index})=>{ !!chat.messages.items[index]}}
+        loadMoreRows={loadMoreRows}
+        rowCount={10000000}
+        threshold={2}
+      >
+        {({ onRowsRendered, registerChild }) => (
+          <div className={s.list} style={{ width: '100%', height: '56vh' }}>
+          <AutoSizer>
+          {({ width, height }) => {
+              return (
+                <List
+                  ref={registerChild}
+                  onRowsRendered={onRowsRendered}
+                  width={width} 
+                  height={height} 
+                  rowHeight={cache.current.rowHeight}
+                  deferredMeasurementCache={cache.current}
+                  overscanRowCount={2}
+                  rowCount={chat.messages.items.length} 
+                  rowRenderer={rowRenderer}
+                  className={s.messages}
+                  id={'messageList'}
+            />
+              )}}
+            
+            </AutoSizer>
+          </div>
+        )}
+      </InfiniteLoader>
+  )
+})
+
+

@@ -41,7 +41,10 @@ export const CreateChatWithSellerBtn = function() {
     function handleClose() {
         setIsVisible(false)
       }
-
+    
+    const customStyle={
+        overlay: {zIndex: 5}
+    }
 
 
   return (
@@ -52,7 +55,7 @@ export const CreateChatWithSellerBtn = function() {
         >  
             <div className={s.textContainer}>Chat With Seller</div>
         </div>
-        <Modal isOpen={isVisible} onRequestClose={handleClose} className={s.modal}>
+        <Modal isOpen={isVisible} onRequestClose={handleClose} className={s.modal} style={customStyle}>
         <div className={s.modalContainer}>
             <Icon name={'cross'} onClick={handleClose} className={s.cross}/>
             <div className={s.modalTitle}>

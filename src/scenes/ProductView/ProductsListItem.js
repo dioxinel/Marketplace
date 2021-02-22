@@ -5,12 +5,21 @@ import s from './Product.module.scss';
 import Icon from 'src/components/Icon'
 import { useProductCollection } from 'src/stores/Products/ProductsCollection';
 import { observer } from 'mobx-react';
+import Skeleton from 'react-loading-skeleton';
 
 
 function ProductsListItem({item}) {
     const history = useHistory()
     const collection = useProductCollection()
     
+    if(!item) {
+        return (
+            <div className={s.listItem}>
+                <Skeleton height={212}/>
+            </div>
+        )
+    }
+
     function handleClick(e) {
         const node = e.target.closest('svg');
         if(node) {

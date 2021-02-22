@@ -1,0 +1,31 @@
+@import 'src/nullStyle.scss';
+@import 'src/App.module.scss';
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+
+.pageBody {
+    font-style: helvetic;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ul{
+        padding: 0px;
+    }
+}
+.productsList {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 861px;
+}
+
+.title {
+    text-transform: uppercase;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: #000000;
+    margin-top: 22px;
+    margin-bottom: 22px;
+    width: 100%;
+}

@@ -45,6 +45,7 @@
         margin-bottom: 5px;
         width: 377px;
         height: 58px;
+        padding-left: 13px;
 
         * {
             margin-left: 13px;
@@ -65,4 +66,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+
+.linkToAuth {
+    width: 425px;
+    height: 76px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
+    border-radius: 7px;
+    margin-top: 24px;
+
+    font-family: 'Helvetica';
+    font-size: 14px;
+    line-height: 76px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #2A2A2A;
+    margin-bottom: 200px;
+    .link {
+        margin-left: 5px;
+        text-transform: uppercase;
+        color: #349A89;
+    }
+
 }

@@ -5,6 +5,7 @@ import { ChatStore } from './Chats/ChatStore';
 import { MessageStore } from './Chats/MessageStore';
 import { EntitiesStore } from './EntitiesStore';
 import { LatestProductsStore } from './Products/LatestProductsStore';
+import { SavedProductsStore } from './Products/SavedProductStore';
 import { SearchProductsStore } from './Products/SearchProductStore';
 import { SetProductPhotoStore } from './Products/SetProductPhotoStore';
 import { ViewerStore } from './ViewerStore';
@@ -15,6 +16,7 @@ export const RootStore = types
     viewer: types.optional(ViewerStore, {}),
     latestProducts: types.optional(LatestProductsStore, {}),
     searchProducts: types.optional(SearchProductsStore, {}),
+    savedProducts: types.optional(SavedProductsStore, {}),
     setProductPhoto: types.optional(SetProductPhotoStore, {}),
 
     chats: types.optional(ChatStore, {}),

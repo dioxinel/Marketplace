@@ -15,7 +15,33 @@ export const InboxView = observer(() => {
   useEffect(() => {
     chats.fetch.run()
   }, [])
-  if(chats.items.length === 0) return (<div>Loading</div>)
+  if(chats.items.length === 0) return (
+    <div className={s.inboxView}>
+      <div>
+        <aside className={s.aside}>
+          <div  style={{ width: '100%', height: '76vh' }}>
+          <AutoSizer>
+            {({width, height}) => (
+              <List 
+              width={width} 
+              height={height} 
+              rowHeight={107} 
+              rowCount={10}
+              className={s.inboxList}
+              rowRenderer={
+              ({ key, index, style, parent }) => {
+                return (<InboxItem  key={key} style={style}/>)
+              }
+            }/>
+            )}
+          </AutoSizer>
+          </div>
+      </aside>
+      </div>
+    </div>
+  
+  
+    ) 
   return (
     <div className={s.inboxView}>
       <div>

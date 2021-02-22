@@ -10,6 +10,20 @@ function Home() {
   useEffect(() => {
       store.latestProducts.fetchLatest.run();
 });
+
+  if(!store.latestProducts.items.length) {
+    return (
+      <div className={s.pageBody}>
+        <ul className={s.productsList}>
+        <PriceRange />
+        <ProductsListItem key={1}/>
+        <ProductsListItem key={2}/>
+        <ProductsListItem key={3}/>
+        <ProductsListItem key={4}/>
+      </ul>
+    </div>
+    )
+  }
   return (
     <div className={s.pageBody}>
       <ul className={s.productsList}>

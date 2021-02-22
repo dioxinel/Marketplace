@@ -27,7 +27,9 @@ function ProductHeader() {
             <Icon name='inboxIcon' onClick={()=>history.push(routes.inbox)}/>
             <SellButton />
             <DropDownMenu />
-            <Icon name={'saved-dt'} className={s.Like} />
+            <Link to={routes.savedProducts}>
+              <Icon name={'saved-dt'} className={s.Like} />
+            </Link>
           </div>
         </div>
         <SearchProduct />

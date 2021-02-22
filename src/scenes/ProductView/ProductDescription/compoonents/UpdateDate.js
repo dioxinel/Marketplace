@@ -1,8 +1,17 @@
 
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 
 export function UpdateDate({updated, ...props}) {
+    if(!updated) {
+        console.log('nodate')
+        return (
+            <div {...props}>
+               <Skeleton width={84} height={32}/> 
+            </div>
+        )
+    }
     const currentDate = new Date();
     const updateDate = new Date(updated);
     let date = `${addZeroToDate(updateDate.getDate())}.${addZeroToDate(updateDate.getMonth())}.${updateDate.getFullYear()}`

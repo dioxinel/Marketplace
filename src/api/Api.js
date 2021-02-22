@@ -65,6 +65,9 @@ export const Products = {
   save(id) {
     return axios.post(`/api/products/${id}/saved`)
   },
+  saved() {
+    return axios.get(`/api/products/saved`)
+  },
   delete(id) {
     return axios.delete(`/api/products/${id}/saved`)
   },

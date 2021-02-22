@@ -35,7 +35,10 @@ function Header() {
           >
           Login
         </Link>
-        <Icon name={'saved-dt'} className={s.Like} />
+        <Link to={routes.savedProducts}>
+          <Icon name={'saved-dt'} className={s.Like} />
+        </Link>
+        
       </div>
   </div>
   );
