@@ -12,17 +12,11 @@ export const ProductInfo = ({photos, title, price}) => {
   }
   return (
     <div className={s.productInfo}>
-     
-        
         {showPhoto}
         <div className={s.productTextInfo}>
           <div>{title || <Skeleton width={200}/>}</div>
           <div className={s.price}>{price || <Skeleton width={50}/>}</div>
         </div>
-        
-
-    
-      
     </div>
   );
 }

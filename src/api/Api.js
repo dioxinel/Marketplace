@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { get } from 'mobx';
+
 
 export const Auth = {
   _token: null,
@@ -65,8 +65,18 @@ export const Products = {
   save(id) {
     return axios.post(`/api/products/${id}/saved`)
   },
+  saveList(list) {
+    return axios.post(`/api/products/saved`, {ids: list})
+  },
   saved() {
     return axios.get(`/api/products/saved`)
+  },
+  getListById(list) {
+    let link = '/api/products/ids?'
+    list.map(item => {
+      link = link + `&id=${item}`
+    })
+    return axios.get(link)
   },
   delete(id) {
     return axios.delete(`/api/products/${id}/saved`)

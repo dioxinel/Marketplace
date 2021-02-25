@@ -1,4 +1,5 @@
 import Api from "src/api";
+import { SaveProductUnAuthViewer } from "src/components/Product/SaveProductUnAuthViewer";
 import { useStore } from "../createStore";
 import { Product } from "../schemas";
 import { asyncModel, createCollection } from "../utils";
@@ -29,6 +30,8 @@ function getProduct(id) {
         // }, 100)}
         if(!product || !product.owner) {
             const res = await Api.Products.getProduct(id)
+            res.data = SaveProductUnAuthViewer(res.data, Root)
+            
             flow.merge(res.data, Product)
         };
         return

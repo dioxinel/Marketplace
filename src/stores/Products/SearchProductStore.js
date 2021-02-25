@@ -1,5 +1,6 @@
 import { types } from 'mobx-state-tree';
 import Api from 'src/api';
+import { SaveProductUnAuthViewer } from 'src/components/Product/SaveProductUnAuthViewer';
 import { SearchProductCollection } from '../schemas';
 import { asyncModel } from '../utils';
 import { ProductModel } from './ProductModel';
@@ -25,7 +26,8 @@ function fetchSearchProducts() {
       priceFrom: store.searchParams.priceFrom,
       priceTo: store.searchParams.priceTo
     });
-    store.setItems(flow.merge(res.data, SearchProductCollection));
+    const data = SaveProductUnAuthViewer(res.data, Root)
+    store.setItems(flow.merge(data, SearchProductCollection));
   };
 }
 

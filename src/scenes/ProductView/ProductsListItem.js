@@ -6,6 +6,7 @@ import Icon from 'src/components/Icon'
 import { useProductCollection } from 'src/stores/Products/ProductsCollection';
 import { observer } from 'mobx-react';
 import Skeleton from 'react-loading-skeleton';
+import SaveProductBtn from 'src/components/Product/SaveProductBtn';
 
 
 function ProductsListItem({item}) {
@@ -22,10 +23,7 @@ function ProductsListItem({item}) {
 
     function handleClick(e) {
         const node = e.target.closest('svg');
-        if(node) {
-            collection.saveProduct.run(item.id)
-            return
-        }
+        if(node) return;
         history.push(generatePath(routes.product, {
             productId: item.id,
         }))
@@ -42,13 +40,7 @@ function ProductsListItem({item}) {
         className={s.NavLink}>
         <div className={s.listItem}>
             <img src={productPicture} alt={"description"} className={s.listItemImage}/>
-            <div className={s.saveContainer}>
-                <Icon 
-                    name={'saved'} 
-                    saved={item.saved} 
-                    className={s.save}
-                    />
-            </div>
+            <SaveProductBtn item={item} />
             <div className={s.listItemTitle}>{item.title}</div>
             <div className={s.itemPrice}>{'$' + item.price}</div>
         </div>

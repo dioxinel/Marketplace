@@ -1,5 +1,6 @@
 import { types } from 'mobx-state-tree';
 import Api from 'src/api';
+import { SaveProductUnAuthViewer } from 'src/components/Product/SaveProductUnAuthViewer';
 import { LatestProductCollection } from '../schemas';
 import { asyncModel } from '../utils';
 import { ProductModel } from './ProductModel';
@@ -19,6 +20,7 @@ export const LatestProductsStore = types
 function fetchLatest() {
   return async function fetchLatestFlow(flow, store, Root) {
     const res = await Api.Products.fetchLatest();
-    store.setItems(flow.merge(res.data, LatestProductCollection));
+    const data = SaveProductUnAuthViewer(res.data, Root)
+    store.setItems(flow.merge(data, LatestProductCollection));
   };
 }

@@ -19,7 +19,15 @@ export const SavedProductsStore = types
 
 function fetchSavedProducts() {
   return async function fetchSavedProductsFlow(flow, store, Root) {
-    const res = await Api.Products.saved();
+    let res;
+    if (Root.viewer.user) {
+      res = await Api.Products.saved();
+    } else {
+      const savedItemList = [...localStorage.getItem('___savedProducts').split(',')];
+      res = await Api.Products.getListById(savedItemList)
+      res.data.map(item => item.saved = true);
+    }
+    
     store.setItems(flow.merge(res.data, SavedProductCollectionSchema));
   };
 }

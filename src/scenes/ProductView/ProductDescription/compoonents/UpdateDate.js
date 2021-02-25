@@ -5,7 +5,6 @@ import Skeleton from 'react-loading-skeleton';
 
 export function UpdateDate({updated, ...props}) {
     if(!updated) {
-        console.log('nodate')
         return (
             <div {...props}>
                <Skeleton width={84} height={32}/> 

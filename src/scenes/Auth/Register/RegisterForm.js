@@ -7,9 +7,11 @@ import { Input } from 'src/components/Form/Input/Input';
 import { validation as v } from '../validation/Validation';
 import { SubmitBTN } from 'src/components/Form/Button/SubmitBtn';
 import Api from 'src/api';
+import { useStore } from 'src/stores/createStore';
 
 export const RegisterForm = () => {
   const history = useHistory();
+  const store = useStore()
   async function onSubmit({
     email,
     password,
@@ -17,7 +19,14 @@ export const RegisterForm = () => {
     passwordAgain,
   }) {
     await Api.Auth.register({ email, password, fullName });
-
+    await store.auth.login.run({ email, password });
+    store.viewer.setIsLoggedIn(true);
+    if(localStorage.getItem('___savedProducts')) {
+      const savedItemList = localStorage.getItem('___savedProducts').split(',');
+      const list = new Array(...savedItemList.map(item => {return Number(item)}))
+      await Api.Products.saveList(list)
+    }
+    localStorage.removeItem('___savedProducts')
     history.push(routes.home);
   }
 

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@travelperksl/super-props": "^4.2.1",
     "axios": "^0.21.1",
+    "faker": "^5.4.0",
     "formik": "^2.1.5",
     "mobx": "^5.15.5",
     "mobx-react": "^6.2.5",
