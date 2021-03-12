@@ -10,6 +10,8 @@ import {
 } from 'mobx-state-tree';
 import { normalize } from 'normalizr';
 
+import { useState, useEffect } from 'react';
+
 export function asyncModel(thunk, auto = true) {
   const model = types
     .model('AsyncModel', {
@@ -45,20 +47,20 @@ export function asyncModel(thunk, auto = true) {
         return promise;
       },
       merge(data, schema) {
-        const {entities, result} = normalize(data, schema);
+        const { entities, result } = normalize(data, schema);
 
-        getRoot(store).entities.merge(entities)
+        getRoot(store).entities.merge(entities);
 
         return result;
       },
       async _auto(promise) {
         try {
           store.start();
-          
+
           await promise;
           store.end();
         } catch (err) {
-          console.log(err)
+          console.log(err);
           store.error(err);
         }
       },
@@ -84,43 +86,37 @@ export function createPersist(store) {
   };
 }
 
-
 export function createCollection(ofModel, asyncModel = {}) {
   const collection = types.model('CollectionModel', {
-      collection: types.map(ofModel),
-      ...asyncModel
+    collection: types.map(ofModel),
+    ...asyncModel,
   }).views((store) => ({
     get(key) {
-      return store.collection.get(String(key))
+      return store.collection.get(String(key));
     },
   }))
-  .actions((store) => ({
+    .actions((store) => ({
       add(key, value) {
-          store.collection.set(String(key), value)
-      }
-  }))
-  return types.optional(collection, {})
+        store.collection.set(String(key), value);
+      },
+    }));
+  return types.optional(collection, {});
 }
-
 
 export function safeReference(T) {
   return types.reference(T, {
     get(identifier, parent) {
-      if(isStateTreeNode(identifier)) {
+      if (isStateTreeNode(identifier)) {
         identifier = getIdentifier(identifier);
       }
 
       return resolveIdentifier(T, parent, identifier);
     },
     set(value) {
-      return value
+      return value;
     },
   });
 }
-
-
-import React, { useState, useEffect } from 'react';
-
 
 export function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -129,12 +125,12 @@ export function useDebounce(value, delay) {
     () => {
       const handler = setTimeout(() => {
         setDebouncedValue(value);
-      }, delay)
-    return () => {
+      }, delay);
+      return () => {
         clearTimeout(handler);
       };
     },
-    [value]
+    [value],
   );
 
   return debouncedValue;

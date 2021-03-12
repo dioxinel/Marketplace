@@ -26,11 +26,11 @@ function ResetPassword() {
               <Input
                 name="email"
                 label="EMAIL"
-                placeholder={'Example@gmail.com'}
+                placeholder="Example@gmail.com"
               />
             </div>
 
-            <SubmitBTN name={'Continue'} />
+            <SubmitBTN name="Continue" />
           </form>
         </Formik>
       </div>

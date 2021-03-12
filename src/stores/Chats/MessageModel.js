@@ -9,4 +9,4 @@ export const MessageModel = types.model('Message', {
   createdAt: types.string,
   updatedAt: types.string,
 
-})
+});

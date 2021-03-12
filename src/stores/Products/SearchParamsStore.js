@@ -6,7 +6,7 @@ export const SearchParamsStore = types
     location: types.optional(types.string, ''),
     priceFrom: types.optional(types.string, ''),
     priceTo: types.optional(types.string, ''),
-  }).actions((store)=>({
+  }).actions((store) => ({
     setKeywords(keywords) {
       store.keywords = keywords;
     },
@@ -14,12 +14,12 @@ export const SearchParamsStore = types
     setLocation(location) {
       store.location = location;
     },
-    
+
     setPriceFrom(priceFrom) {
       store.priceFrom = priceFrom;
     },
 
     setPriceTo(priceTo) {
       store.priceTo = priceTo;
-    }
-  }))
+    },
+  }));

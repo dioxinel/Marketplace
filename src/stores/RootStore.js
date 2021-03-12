@@ -38,7 +38,7 @@ export const RootStore = types
     },
     subscribeToEvents() {
       SocketApi.handleMessages((message) => {
-        store.chats.handleMessage(message)
-      })
-    }
+        store.chats.handleMessage(message);
+      });
+    },
   }));

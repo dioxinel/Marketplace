@@ -1,39 +1,39 @@
 import React from 'react';
-import s from './Header.module.scss';
-import Icon from '../Icon';
 import { useStore } from 'src/stores/createStore';
 import { observer } from 'mobx-react';
 import Api from 'src/api';
-import 'mobx-react-lite/batchingForReactDom';
-import { SellButton } from './SellButton';
-import { Logo } from './Logo';
 import { useHistory } from 'react-router';
 import { routes } from 'src/scenes/routes';
 import SearchProduct from 'src/scenes/ProductView/Search/SearchProduct';
-import { DropDownMenu } from './DropDownMenu';
 import { Link } from 'react-router-dom';
+import { DropDownMenu } from './DropDownMenu';
+import { Logo } from './Logo';
+import { SellButton } from './SellButton';
+import Icon from '../Icon';
+import s from './Header.module.scss';
+import { LoginButton } from './components/LoginButton';
 
 function ProductHeader() {
   const store = useStore();
-  const history = useHistory()
+  const history = useHistory();
 
   if (store.viewer.isLoggedIn) {
     return (
-    <div>
-      <div className={s.productHeader}>
-        <div className={s.headerContainer}>
-          <Logo darkTheme={true}/>
-          <div className={s.right}>
-            <Icon name='inboxIcon' onClick={()=>history.push(routes.inbox)}/>
-            <SellButton />
-            <DropDownMenu />
-            <Link to={routes.savedProducts}>
-              <Icon name={'saved-dt'} className={s.Like} />
-            </Link>
+      <div>
+        <div className={s.productHeader}>
+          <div className={s.headerContainer}>
+            <Logo darkTheme />
+            <div className={s.right}>
+              <Icon name="inboxIcon" onClick={() => history.push(routes.inbox)} />
+              <SellButton />
+              <DropDownMenu />
+              <Link to={routes.savedProducts}>
+                <Icon name="saved-dt" className={s.Like} />
+              </Link>
+            </div>
           </div>
+          <SearchProduct />
         </div>
-        <SearchProduct />
-      </div>
       </div>
     );
   }
@@ -42,16 +42,11 @@ function ProductHeader() {
       <div className={s.headerContainer}>
         <Logo />
         <div className={s.right}>
-          <button className={s.SellBtn}>SELL</button>
-          <Link 
-          to={routes.login}
-          className={s.logBtn}
-          >
-          Login
-        </Link>
-        <Link to={routes.savedProducts}>
-          <Icon name={'saved-dt'} className={s.Like} />
-        </Link>
+          <SellButton />
+          <LoginButton />
+          <Link to={routes.savedProducts}>
+            <Icon name="saved-dt" className={s.Like} />
+          </Link>
         </div>
       </div>
       <SearchProduct />

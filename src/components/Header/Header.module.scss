@@ -67,12 +67,20 @@ button {
     line-height: 31px;
 }
 
-.LogBtn {
-    width: 42px;
-    line-height: 40px;
-    font-size: 12px;
-    margin-right: 40px;
-    text-transform: uppercase;
+.logBtn {
+    // width: 42px;
+    // line-height: 40px;
+    // font-size: 12px;
+    // margin-right: 40px;
+    // text-transform: uppercase;
+    display: block;
+    background: #349A89;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 14px;
+    width: 75px;
+    line-height: 31px;
+    text-align: center;
 }
 
 .right {
@@ -83,14 +91,13 @@ button {
 .avatar {
     display: inline-block;
     background-color: orange;
+    border-radius: 50%;
+    line-height: 40px;
     height: 40px;
     width: 40px;
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 18x;
     text-transform: capitalize;
     text-align: center;
-    border-radius: 50%;
-    margin-right: 56px;
 }
 
 
@@ -112,24 +119,19 @@ button {
         height: 57px;
         width: 204px;
         padding-top: 9px;
-        padding-left: 16px;
+        padding-left: 5px;
 
-        .avatarContainer {
-            width: 48px;
-            height: 46px;
-            margin: 0;
-        }
 
         .avatar {
             display: inline-block;
             background-color: orange;
-            line-height: 40px;
+            border-radius: 50%;
+            line-height: 48px;
+            height: 48px;
             width: 48px;
-            font-size: 30px;
-            font-weight: 600;
+            font-size: 18px;
             text-transform: capitalize;
             text-align: center;
-            
         }
 
         .userTextInfo {
@@ -189,3 +191,6 @@ button {
 
 }
 
+.Like {
+    margin-left: 36px;
+}

@@ -13,13 +13,21 @@ export const LatestProductsStore = types
   })
   .actions((store) => ({
     setItems(items) {
-      store.items = items;
+      store.items = [ ...store.items, ...items];
     },
   }));
 
 function fetchLatest() {
   return async function fetchLatestFlow(flow, store, Root) {
-    const res = await Api.Products.fetchLatest();
+    let res;
+    try{
+      if(store.items[store.items.length - 1].id) {
+        res = await Api.Products.fetchLatest(store.items[store.items.length - 1].id);
+      }
+    }catch{
+      res = await Api.Products.fetchLatest();
+    }
+    
     const data = SaveProductUnAuthViewer(res.data, Root)
     store.setItems(flow.merge(data, LatestProductCollection));
   };

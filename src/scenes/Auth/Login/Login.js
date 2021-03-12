@@ -9,9 +9,9 @@ function Login() {
     <div className={s.pageBody}>
       <LoginForm />
       <div className={s.linkToAuth}>
-          I have no account,
-          <Link to={routes.register} className={s.link}>Register Now</Link>
-        </div>
+        I have no account,
+        <Link to={routes.register} className={s.link}>Register Now</Link>
+      </div>
     </div>
   );
 }

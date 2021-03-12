@@ -1,6 +1,5 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-
 const proxy = createProxyMiddleware({
   target: 'https://apiko-intensive-backend.herokuapp.com/',
   pathRewrite: {
@@ -22,4 +21,3 @@ module.exports = (app) => {
   app.use('/api', proxy);
   app.use('/socket.io', wsProxy);
 };
-

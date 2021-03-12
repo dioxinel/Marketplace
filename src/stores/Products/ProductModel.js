@@ -1,9 +1,8 @@
 import { getSnapshot, types } from 'mobx-state-tree';
 import Api from 'src/api';
 import { ChatSchema } from '../schemas';
-import { UserModel } from '../Users/UserModel'
-import { asyncModel, safeReference } from '../utils';
-
+import { UserModel } from '../Users/UserModel';
+import { asyncModel } from '../utils';
 
 export const ProductModel = types.model('ProductModel', {
   id: types.identifierNumber,
@@ -17,36 +16,33 @@ export const ProductModel = types.model('ProductModel', {
   createdAt: types.string,
   updatedAt: types.string,
 
-  owner: types.maybe(safeReference(UserModel)),
+  owner: types.maybe(types.reference(UserModel)),
 
   createChat: asyncModel(createChat, false),
 }).actions((store) => ({
   save() {
     store.saved = !store.saved;
-  }
-})
-)
-
+  },
+}));
 
 function createChat(message) {
   return async function createChatFlow(flow, store) {
     let chatId;
     try {
-      flow.start()
+      flow.start();
 
-      const res = await Api.Chats.createChat(message, store.id)
+      const res = await Api.Chats.createChat(message, store.id);
       chatId = res.data.id;
-      res.data.participants = [getSnapshot(store.owner)]
-      
-      flow.merge(res.data, ChatSchema)
+      res.data.participants = [getSnapshot(store.owner)];
 
-      flow.end()
-    } catch(err) {
-      flow.error(err)
+      flow.merge(res.data, ChatSchema);
+
+      flow.end();
+    } catch (err) {
+      flow.error(err);
 
       throw err;
     }
     return chatId;
-  }
+  };
 }
-

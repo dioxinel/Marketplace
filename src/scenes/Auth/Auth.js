@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
+import AuthHeader from 'src/components/Header/AuthHeader';
 import { PrivateRoute, routes } from '../routes';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import ResetPassword from './ResetPassword/ResetPassword';
-import AuthHeader from 'src/components/Header/AuthHeader';
 
 function Auth() {
   return (
@@ -15,7 +15,7 @@ function Auth() {
         <PrivateRoute
           path={routes.resetPassword}
           component={ResetPassword}
-          
+
         />
       </Switch>
     </div>

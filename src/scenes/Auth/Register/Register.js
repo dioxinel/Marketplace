@@ -1,8 +1,8 @@
 import React from 'react';
-import { RegisterForm } from './RegisterForm';
-import s from '../Auth.module.scss';
 import { Link } from 'react-router-dom';
 import { routes } from 'src/scenes/routes';
+import { RegisterForm } from './RegisterForm';
+import s from '../Auth.module.scss';
 
 function Register() {
   function onSubmit(values) {

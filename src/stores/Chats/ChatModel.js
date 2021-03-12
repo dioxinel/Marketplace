@@ -21,19 +21,17 @@ export const ChatModel = types.model('Chat', {
   sendMessage: asyncModel(sendMessage),
 })
 
-.preProcessSnapshot((snapshot) => {
-  return {
+  .preProcessSnapshot((snapshot) => ({
     ...snapshot,
-      product: snapshot.product || snapshot.productId,
-      participants: undefined,
-      user: snapshot.participants[0]
-  }
-})
+    product: snapshot.product || snapshot.productId,
+    participants: undefined,
+    user: snapshot.participants[0],
+  }));
 
 function sendMessage(text) {
   return async function sendMessageFlow(flow, store) {
-    const res = await Api.Chats.sendMessage(store.id, text)
+    const res = await Api.Chats.sendMessage(store.id, text);
 
-    const result = flow.merge(res.data, MessageSchema)
-  }
+    const result = flow.merge(res.data, MessageSchema);
+  };
 }

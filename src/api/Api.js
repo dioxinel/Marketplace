@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const Auth = {
   _token: null,
 
@@ -16,8 +15,8 @@ export const Auth = {
 
   login({ email, password }) {
     return axios.post('/api/auth/login', {
-      email: email,
-      password: password,
+      email,
+      password,
     });
   },
 
@@ -42,86 +41,102 @@ export const Account = {
     return axios.get(`/api/users/${id}`);
   },
   editProfile({ fullName, avatar, phone }) {
-    return axios.put(`/api/account`, { fullName, avatar, phone });
+    return axios.put('/api/account', { fullName, avatar, phone });
   },
 };
 
 export const Products = {
-  fetchLatest() {
+  fetchLatest(lastItemId) {
+    if (lastItemId) {
+      return axios.get(`/api/products/latest?from=${lastItemId}`);
+    }
     return axios.get('/api/products/latest');
   },
   getProduct(id) {
-    return axios.get(`/api/products/${id}`)
+    return axios.get(`/api/products/${id}`);
   },
-  add( {...data}) {
-     return axios.post('/api/products', {...data})
+  add({ ...data }) {
+    return axios.post('/api/products', { ...data });
   },
   uploadImage(data) {
-    return axios.post(`/api/upload/images`, data, {
+    return axios.post('/api/upload/images', data, {
       headers: {
-        'Content-Type': 'multipart/form-data'
-      }})
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   },
   save(id) {
-    return axios.post(`/api/products/${id}/saved`)
+    return axios.post(`/api/products/${id}/saved`);
   },
   saveList(list) {
-    return axios.post(`/api/products/saved`, {ids: list})
+    return axios.post('/api/products/saved', { ids: list });
   },
-  saved() {
-    return axios.get(`/api/products/saved`)
+  saved(lastItemId) {
+    if (lastItemId) {
+      return axios.get(`/api/products/saved?from=${lastItemId}&limit=20`);
+    }
+    return axios.get('/api/products/saved');
   },
+
   getListById(list) {
-    let link = '/api/products/ids?'
-    list.map(item => {
-      link = link + `&id=${item}`
-    })
-    return axios.get(link)
+    // if (!!list.length) {
+    //   const res = {}
+    //   return res.data = []
+    // }
+
+    let link = '/api/products/ids?';
+    list.map((item) => {
+      link += `&id=${item}`;
+    });
+    return axios.get(link);
   },
   delete(id) {
-    return axios.delete(`/api/products/${id}/saved`)
+    return axios.delete(`/api/products/${id}/saved`);
   },
 
   fetchOwnProducts(id) {
-    return axios.get(`/api/users/${id}/products`)
+    return axios.get(`/api/users/${id}/products`);
   },
-  search({  keywords, location, priceFrom, priceTo }) {
-    if(!keywords && !location)return;
+  search({
+    keywords, location, priceFrom, priceTo, fetchFrom,
+  }) {
+    if (!keywords && !location) return;
     let link = '/api/products/search?';
-    if(keywords) {
-      link = link +  `keywords=${keywords}`
+    if (keywords) {
+      link += `keywords=${keywords}`;
     }
-    if(location) {
-      link = link +  `&location=${location}`
+    if (location) {
+      link += `&location=${location}`;
     }
-    if(priceFrom) {
-      link = link +  `&priceFrom=${priceFrom}`
+    if (priceFrom) {
+      link += `&priceFrom=${priceFrom}`;
     }
-    if(priceTo) {
-      link = link +  `&priceTo=${priceTo}`
+    if (priceTo) {
+      link += `&priceTo=${priceTo}`;
     }
-    link = link + `&offset=0&limit=20`
-    return axios.get(link)
-  }
+    if (fetchFrom) {
+      link += `&offset=${fetchFrom}`;
+    }
+
+    return axios.get(link);
+  },
 };
 
 export const Chats = {
   createChat(message, id) {
-    return axios.post(`/api/products/${id}/createChat`, message)
+    return axios.post(`/api/products/${id}/createChat`, message);
   },
   getList() {
-    return axios.get('/api/chats')
+    return axios.get('/api/chats');
   },
   sendMessage(id, text) {
-    return axios.post(`/api/chats/${id}/messages`, { message: text })
+    return axios.post(`/api/chats/${id}/messages`, { message: text });
   },
   getMessages(id, lastItemId) {
-    console.log(lastItemId)
     if (lastItemId) {
       return axios.get(`/api/chats/${id}/messages?from=${lastItemId}&limit=20`);
     }
-    return axios.get(`/api/chats/${id}/messages?limit=20`)
+    return axios.get(`/api/chats/${id}/messages?limit=20`);
   },
-  
 
-}
+};

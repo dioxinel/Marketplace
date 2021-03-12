@@ -1,17 +1,17 @@
 import React from 'react';
 import { Formik } from 'formik';
-import s from '../Auth.module.scss';
 import { useHistory } from 'react-router';
 import { routes } from 'src/scenes/routes';
 import { Input } from 'src/components/Form/Input/Input';
-import { validation as v } from '../validation/Validation';
 import { SubmitBTN } from 'src/components/Form/Button/SubmitBtn';
 import Api from 'src/api';
 import { useStore } from 'src/stores/createStore';
+import { validation as v } from '../validation/Validation';
+import s from '../Auth.module.scss';
 
 export const RegisterForm = () => {
   const history = useHistory();
-  const store = useStore()
+  const store = useStore();
   async function onSubmit({
     email,
     password,
@@ -21,12 +21,12 @@ export const RegisterForm = () => {
     await Api.Auth.register({ email, password, fullName });
     await store.auth.login.run({ email, password });
     store.viewer.setIsLoggedIn(true);
-    if(localStorage.getItem('___savedProducts')) {
+    if (localStorage.getItem('___savedProducts')) {
       const savedItemList = localStorage.getItem('___savedProducts').split(',');
-      const list = new Array(...savedItemList.map(item => {return Number(item)}))
-      await Api.Products.saveList(list)
+      const list = new Array(...savedItemList.map((item) => Number(item)));
+      await Api.Products.saveList(list);
     }
-    localStorage.removeItem('___savedProducts')
+    localStorage.removeItem('___savedProducts');
     history.push(routes.home);
   }
 
@@ -49,7 +49,7 @@ export const RegisterForm = () => {
             <Input
               name="email"
               label="EMAIL"
-              placeholder={'Example@gmail.com'}
+              placeholder="Example@gmail.com"
               validate={v.validateEmail}
             />
           </div>
@@ -58,7 +58,7 @@ export const RegisterForm = () => {
             <Input
               name="fullName"
               label="FULL NAME"
-              placeholder={'Tony Stark'}
+              placeholder="Tony Stark"
               validate={v.validateFullName}
             />
           </div>
@@ -66,6 +66,7 @@ export const RegisterForm = () => {
             <Input
               name="password"
               label="PASSWORD"
+              type="password"
               validate={v.validatePass}
             />
           </div>
@@ -74,9 +75,10 @@ export const RegisterForm = () => {
               name="passwordAgain"
               label="PASSWORD AGAIN"
               validate={v.validatePass}
+              type="password"
             />
           </div>
-          <SubmitBTN name={'Register'} />
+          <SubmitBTN name="Register" />
         </form>
       </Formik>
     </div>

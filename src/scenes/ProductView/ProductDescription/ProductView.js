@@ -6,21 +6,17 @@ import { ProductDescription } from './compoonents/ProductDescription';
 import { RightBar } from './compoonents/RightBar/RightBar';
 import s from './ProductDescription.module.scss';
 
-
 export const ProductView = observer(() => {
-  const { productId }= useParams();
-  const collection = useProductCollection()
-  collection.getProduct.run(productId)
-  const product = collection.collection.get(productId)
+  const { productId } = useParams();
+  const collection = useProductCollection();
+  collection.getProduct.run(productId);
+  const product = collection.collection.get(productId);
   if (product) {
     return (
       <div className={s.productView}>
         <ProductDescription product={product} />
         <RightBar product={product} />
       </div>
-    
-    
     );
   }
-  return <div>Not found</div>;
-})
+});

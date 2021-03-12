@@ -9,7 +9,7 @@ import Skeleton from 'react-loading-skeleton';
 import SaveProductBtn from 'src/components/Product/SaveProductBtn';
 
 
-function ProductsListItem({item}) {
+function ProductsListItem({item, cb}) {
     const history = useHistory()
     const collection = useProductCollection()
     
@@ -31,13 +31,14 @@ function ProductsListItem({item}) {
 
 
     let productPicture = 'https://argamak-sher.uz/wp-content/uploads/no-image.png'  
-    try{if (item.photos.length !== 0 && item.photos[0]) {
+    try{if (item.photos.length !== 0 && item.photos[0].startsWith('http')) {
         productPicture = item.photos[0]}}catch{}
   return (
     <div
         onClick={handleClick}
         key={item.id}
-        className={s.NavLink}>
+        className={s.NavLink}
+        ref={cb}>
         <div className={s.listItem}>
             <img src={productPicture} alt={"description"} className={s.listItemImage}/>
             <SaveProductBtn item={item} />

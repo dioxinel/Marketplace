@@ -23,7 +23,7 @@ export const validation = {
     let error;
     if (!value) {
       error = 'Required';
-    } else if (!/^[0-9]{1,15}$/i.test(value) || /^[A-Z._%+-]$/i.test(value) ) {
+    } else if (!/^[0-9]{1,15}$/i.test(value) || /^[A-Z._%+-]$/i.test(value)) {
       error = 'Invalid price ';
     }
     return error;

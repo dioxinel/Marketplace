@@ -1,15 +1,13 @@
 import React from 'react';
-import s from './Header.module.scss';
-import Icon from '../Icon';
 import { useStore } from 'src/stores/createStore';
-
 import { observer } from 'mobx-react';
 import Api from 'src/api';
-import 'mobx-react-lite/batchingForReactDom';
-import { Logo } from './Logo';
 import { routes } from 'src/scenes/routes';
-import { DropDownMenu } from './DropDownMenu';
 import { Link } from 'react-router-dom';
+import { Logo } from './Logo';
+import { DropDownMenu } from './DropDownMenu';
+import Icon from '../Icon';
+import s from './Header.module.scss';
 
 function Header() {
   const store = useStore();
@@ -17,30 +15,30 @@ function Header() {
   if (store.viewer.isLoggedIn) {
     return (
       <div className={s.Header}>
-        <Logo darkTheme={true}/>
+        <Logo darkTheme />
         <div className={s.right}>
           <DropDownMenu />
-          <Icon name={'saved-dt'} className={s.Like} />
+          <Icon name="saved-dt" className={s.Like} />
         </div>
       </div>
     );
   }
   return (
     <div className={s.Header}>
-      <Logo darkTheme={true} />
+      <Logo darkTheme />
       <div className={s.right}>
-        <Link 
+        <Link
           to={routes.login}
           className={s.logBtn}
-          >
+        >
           Login
         </Link>
         <Link to={routes.savedProducts}>
-          <Icon name={'saved-dt'} className={s.Like} />
+          <Icon name="saved-dt" className={s.Like} />
         </Link>
-        
+
       </div>
-  </div>
+    </div>
   );
 }
 

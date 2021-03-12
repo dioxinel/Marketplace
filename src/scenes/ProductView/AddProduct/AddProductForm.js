@@ -6,7 +6,7 @@ import s from '../Product.module.scss';
 import { validation as v } from './validation/Validation';
 import AddPhotos from './AddPhotos';
 
-function AddProductForm({onSubmit}) {
+function AddProductForm({ onSubmit }) {
   const formikProps = {
     initialValues: {
       title: '',
@@ -20,35 +20,34 @@ function AddProductForm({onSubmit}) {
   return (
     <div className="App">
       <Formik {...formikProps}>
-        <form className={s.form} id={'form'}>
+        <form className={s.form} id="form">
           <h3>Add product</h3>
           <div className={s.group}>
             <Input
               name="title"
               label="TITLE"
               id="title"
-              placeholder={'For example: Iron man suit'}
+              placeholder="For example: Iron man suit"
               validate={v.validateTitle}
             />
           </div>
 
           <div className={s.group}>
-            <Input 
-                name="location" 
-                label="LOCATION"
-                id="location"
-                placeholder={'For example: Los Angeles, CA'}
-                validate={v.validateTitle}
-                />
+            <Input
+              name="location"
+              label="LOCATION"
+              placeholder="For example: Los Angeles, CA"
+              validate={v.validateTitle}
+            />
           </div>
           <div className={s.group}>
             <Input
-              as={'textarea'}
+              as="textarea"
               name="description"
               label="DESCRIPTION"
               id="description"
               className={s.description}
-              placeholder={'For example: Iron man suit'}
+              placeholder="For example: Iron man suit"
             />
           </div>
           <AddPhotos />
@@ -57,12 +56,12 @@ function AddProductForm({onSubmit}) {
               name="price"
               label="PRICE"
               id="price"
-              placeholder={'For example: 100'}
+              placeholder="For example: 100"
               validate={v.validatePrice}
             />
           </div>
 
-          <SubmitBTN name={'Submit'} id={'submit'}/>
+          <SubmitBTN name="Submit" id="submit" />
         </form>
       </Formik>
     </div>

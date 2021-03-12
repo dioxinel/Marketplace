@@ -9,22 +9,22 @@ import { ProductModel } from './ProductModel';
 export const OwnProductsStore = types.model('OwnProductsStore', {
   items: types.array(types.reference(types.late(() => ProductModel))),
 
-  fetch: asyncModel(fetchOwnProducts)
+  fetch: asyncModel(fetchOwnProducts),
 }).actions((store) => ({
   addItems(items) {
-    store.items = items
-  }
+    store.items = items;
+  },
 }));
 
 function fetchOwnProducts() {
   return async function fetchOwnProductsFlow(flow, store, Root) {
     const res = await Api.Products.fetchOwnProducts(getParent(store).id);
 
-    const data = SaveProductUnAuthViewer(res.data.list, Root)
-    
-    const { result, entities } = normalize(data, LatestProductCollection)
+    const data = SaveProductUnAuthViewer(res.data.list, Root);
+
+    const { result, entities } = normalize(data, LatestProductCollection);
     Root.entities.merge(entities);
 
-    store.addItems(result)
-  }
+    store.addItems(result);
+  };
 }

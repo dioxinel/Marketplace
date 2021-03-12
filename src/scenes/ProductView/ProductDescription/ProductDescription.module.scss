@@ -53,10 +53,15 @@
     background-color: #FFFFFF;
     position: relative;
 
+    .container {
+        overflow: hidden;
+        width: 577px;
+        height: 274px;
+    }
+
     .productImage {
         display: block;
         width: 577px;
-        height: 274px;
         margin: auto;
         margin-top: 3px;
         overflow: hidden;
@@ -150,7 +155,17 @@
     height:146px;
     background-color: #FFFFFF;
     border-radius: 4px;
+}
 
+.loading {
+    width: 259px;
+    height:146px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    
+    .spine {
+        margin-left: 40%;
+    }
 }
 
 .avatarContainer {
@@ -158,6 +173,7 @@
     height: 50px;
     border-radius: 4px 4px 0 0;
 }
+
 
 .location {
     color: rgba(43, 43, 43, 0.499918);

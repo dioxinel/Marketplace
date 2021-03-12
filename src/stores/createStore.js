@@ -1,5 +1,5 @@
-import { RootStore } from './RootStore';
 import { createContext, useContext } from 'react';
+import { RootStore } from './RootStore';
 import { createPersist } from './utils';
 
 export function createStore() {
@@ -14,7 +14,7 @@ export function createStore() {
 
 const MSTContext = createContext(null);
 
-export const Provider = MSTContext.Provider;
+export const { Provider } = MSTContext;
 
 export function useStore(mapStateToProps) {
   const store = useContext(MSTContext);

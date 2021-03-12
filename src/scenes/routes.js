@@ -4,21 +4,20 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Home from './Home/Home.js';
-import Auth from './Auth/Auth.js';
 import React from 'react';
 import { useStore } from 'src/stores/createStore.js';
 import { observer } from 'mobx-react';
+import Header from 'src/components/Header/Header';
+import ProductHeader from 'src/components/Header/ProductHeader.js';
+import Home from './Home/Home.js';
+import Auth from './Auth/Auth.js';
 import { ProductView } from './ProductView/ProductDescription/ProductView.js';
 import AddProduct from './ProductView/AddProduct/AddProduct.js';
-import Header from 'src/components/Header/Header';
 import { UserProducts } from './ProductView/UserProducts/UserProducts.js';
 import { InboxView } from './Inbox/InboxView.js';
 import { EditProfileView } from './EditProfile/EditProfileView.js';
-import ProductHeader from 'src/components/Header/ProductHeader.js';
 import SearchProductList from './ProductView/Search/SearchProductList.js';
 import { SavedProducts } from './ProductView/SavedProduct/SavedProducts.js';
-
 
 export const routes = {
   home: '/',
@@ -41,19 +40,17 @@ export const PrivateRoute = observer(
     const store = useStore();
     if (store.viewer.isLoggedIn) {
       return <Redirect to={routes.home} />;
-    } else {
-      return (
-        <Route
-          {...props}
-          render={(routeProps) => <Component {...routeProps} />}
-        />
-      );
     }
+    return (
+      <Route
+        {...props}
+        render={(routeProps) => <Component {...routeProps} />}
+      />
+    );
   },
 );
 
 function Router() {
-
   return (
     <BrowserRouter>
       <ProductHeader />

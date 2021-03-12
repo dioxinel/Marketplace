@@ -4,9 +4,8 @@ import Router from './scenes/routes.js';
 import { createStore, Provider } from './stores/createStore.js';
 
 const store = createStore();
-store.bootstrap()
+store.bootstrap();
 function App() {
-
   return (
     <main>
       <Provider value={store}>
@@ -16,6 +15,6 @@ function App() {
   );
 }
 
-Modal.setAppElement('#modalRoot')
+Modal.setAppElement('#modalRoot');
 
 export default App;
